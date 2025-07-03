@@ -14,7 +14,7 @@ title_separator          : "-"
 name                     : &name "Lorenz Geyser"
 description              : &description ""
 url                      : https://lorenzg2006.github.io
-baseurl                  : "/" # the subpath of your site, e.g. "/blog"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "lorenzg2006/lorenzg2006.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
@@ -28,7 +28,7 @@ author:
   bio              : "Together we'll find a way"
   location         : "$HOME"
   employer         : "NULL"
-  uri              : "www.geyser.at"
+  uri              : "https://www.geyser.at"
   email            : "lorenz@geyser.at" 
 
   # Academic websites
