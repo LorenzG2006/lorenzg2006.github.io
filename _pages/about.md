@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Welcome"
+title: "Hello, world!"
 author_profile: true
 redirect_from: 
   - /about/
@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Hello, world! I'm Lorenz Geyser, an IT professional from Austria.
+I'm Lorenz Geyser, an IT professional from Austria.
 
 ## About Me
 Born in 2006 and based in Vienna, I have a strong passion for information technology and the digital world in general. Whether it's exploring new programming languages, understanding system architectures, or diving into the latest tech trends — I'm always eager to learn and expand my knowledge.
