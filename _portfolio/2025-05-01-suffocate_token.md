@@ -1,6 +1,6 @@
 ---
 title: "Suffocate (Token)"
-excerpt: "<em>Suffocate (Token)</em> is a modern metal band project.<br/><br /><a href='https://token.watchmesuffocate.com/suffocate.html' target='_blank'><img src='/images/portfolio/suffocate_token.png'>"
+excerpt: "<em>Suffocate (Token)</em> is the official digital token of the band Watch Me Suffocate, used to access exclusive music, artwork, and more.<br/><br/><a href='https://token.watchmesuffocate.com/suffocate.html' target='_blank'><img src='/images/portfolio/suffocate_token.png'>"
 collection: portfolio
 ---
 
