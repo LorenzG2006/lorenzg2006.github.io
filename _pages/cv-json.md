@@ -33,3 +33,11 @@ redirect_from:
   <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download CV as PDF</a>
   <a href="{{ base_path }}/cv" class="btn btn--inverse">View Markdown CV</a>
 </div>
+<div class="cv-additional-documents">
+  <p>
+    <strong>Additional Documents:</strong>
+  </p>
+  <a href="{{ base_path }}/files/Jahreszeugnis.pdf" class="btn btn--primary">Download Jahreszeugnis</a>
+  <br />
+  <a href="{{ base_path }}/files/RDP.pdf" class="btn btn--primary">Download RDP</a>
+</div>

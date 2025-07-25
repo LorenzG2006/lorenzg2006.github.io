@@ -28,5 +28,3 @@ You can reach me through the following channels. I commonly go by **LorenzG2006*
 * E-mail: lorenz [at] geyser.at  
 * [Matrix](https://matrix.to/#/@lorenzg2006:matrix.org): @lorenzg2006:matrix.org  
 * [Threema](https://threema.id/EHW3YUS6): EHW3YUS6
-
-![nohello.club](/images/nohello.png)

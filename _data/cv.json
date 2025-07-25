@@ -5,6 +5,11 @@
         "summary": "IT professional from Austria with a passion for technology.",
         "profiles": [
             {
+                "network": "GitHub",
+                "username": "LorenzG2006",
+                "url": "https://github.com/LorenzG2006"
+            },
+            {
                 "network": "Matrix",
                 "username": "lorenzg2006",
                 "url": "https://matrix.to/#/@lorenzg2006:matrix.org"
@@ -13,11 +18,6 @@
                 "network": "Threema",
                 "username": "EHW3YUS6",
                 "url": "https://threema.id/EHW3YUS6"
-            },
-            {
-                "network": "GitHub",
-                "username": "LorenzG2006",
-                "url": "https://github.com/LorenzG2006"
             }
         ]
     },
@@ -26,7 +26,7 @@
             "company": "mo-tion",
             "position": "IT Specialist",
             "startDate": "2025-07",
-            "endDate": "",
+            "endDate": "now",
             "summary": "Full-time position supporting event technology and multimedia productions."
         },
         {
