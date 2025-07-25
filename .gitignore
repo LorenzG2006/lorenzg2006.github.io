@@ -18,3 +18,5 @@ vendor/
 
 # Ignore folders related to IDEs
 .vscode/
+
+/_data/cv-full.json

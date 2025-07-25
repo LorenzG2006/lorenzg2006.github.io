@@ -39,3 +39,22 @@
 .cv-download-links a {
   margin: 0 0.5rem;
 }
+
+/* Additional documents styling */
+.cv-additional-documents {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fafafa;
+}
+
+.cv-additional-documents p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.cv-additional-documents a {
+  display: inline-block;
+  margin: 0.25rem 0.5rem;
+}

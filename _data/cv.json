@@ -1,1 +1,127 @@
-{}
+{
+    "basics": {
+        "name": "Lorenz Geyser",
+        "website": "https://www.geyser.at",
+        "summary": "IT professional from Austria with a passion for technology.",
+        "profiles": [
+            {
+                "network": "Matrix",
+                "username": "lorenzg2006",
+                "url": "https://matrix.to/#/@lorenzg2006:matrix.org"
+            },
+            {
+                "network": "Threema",
+                "username": "EHW3YUS6",
+                "url": "https://threema.id/EHW3YUS6"
+            },
+            {
+                "network": "GitHub",
+                "username": "LorenzG2006",
+                "url": "https://github.com/LorenzG2006"
+            }
+        ]
+    },
+    "work": [
+        {
+            "company": "mo-tion",
+            "position": "IT Specialist",
+            "startDate": "2025-07",
+            "endDate": "",
+            "summary": "Full-time position supporting event technology and multimedia productions."
+        },
+        {
+            "company": "Hitachi Rail GTS",
+            "position": "Internship - IT Department",
+            "startDate": "2024-07",
+            "endDate": "2024-07",
+            "summary": "Summer internship focused on IT-related tasks."
+        },
+        {
+            "company": "Verbund AG",
+            "position": "Internship - IT Department",
+            "startDate": "2023-08",
+            "endDate": "2023-08",
+            "summary": "Summer internship in IT."
+        }
+    ],
+    "education": [
+        {
+            "institution": "HTL Hollabrunn",
+            "area": "Information Technology",
+            "studyType": "Secondary Technical School",
+            "startDate": "2020-09",
+            "endDate": "2025-04"
+        },
+        {
+            "institution": "AHS Korneuburg",
+            "area": "General Secondary Education",
+            "studyType": "Secondary School",
+            "startDate": "2016-09",
+            "endDate": "2020-06"
+        }
+    ],
+    "skills": [
+        {
+            "name": "Programming",
+            "keywords": [
+                "Java",
+                "Python",
+                "JavaScript",
+                "TypeScript",
+                "SQL"
+            ]
+        },
+        {
+            "name": "Systems and Networking",
+            "keywords": [
+                "Linux system administration",
+                "Windows administration",
+                "Network configuration",
+                "Cloud basics (AWS, Azure, Google Cloud)"
+            ]
+        },
+        {
+            "name": "Software Development Practices",
+            "keywords": [
+                "Git version control",
+                "Agile (Scrum, Kanban)",
+                "Testing and debugging",
+                "CI/CD basics"
+            ]
+        },
+        {
+            "name": "Databases",
+            "keywords": [
+                "PostgreSQL",
+                "MySQL",
+                "MongoDB"
+            ]
+        },
+        {
+            "name": "Security",
+            "keywords": [
+                "IT security principles",
+                "Network security",
+                "Authentication (OAuth, JWT basics)"
+            ]
+        },
+        {
+            "name": "DevOps and Automation",
+            "keywords": [
+                "Docker basics",
+                "Bash scripting",
+                "Python scripting"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "German",
+            "fluency": "Native"
+        },
+        {
+            "language": "English",
+            "fluency": "Fluent"
+        }
+    ]
+}
