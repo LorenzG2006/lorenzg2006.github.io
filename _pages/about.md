@@ -22,7 +22,7 @@ I'm currently working at [mo-tion](https://mo-tion.at), an event company based i
 ## Background
 I attended primary school in Korneuburg, followed by lower secondary education at AHS Korneuburg. I later completed my studies at HTL Hollabrunn with a focus on Information Technology. This educational path has provided me with a strong foundation in both general academics and specialized IT knowledge.
 
-## Contact ([nohello.club](https://nohello.club))
+## Contact ([nohello.club](https://www.geyser.at/nohello.club))
 You can reach me through the following channels. I commonly go by **LorenzG2006** online, which makes it easy to find me across various platforms:
 
 * E-mail: lorenz [at] geyser.at  
