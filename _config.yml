@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Lorenz Geyser"
 title_separator          : "-"
 name                     : &name "Lorenz Geyser"
-description              : &description ""
+description              : &description "Personal Website"
 url                      : https://lorenzg2006.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "lorenzg2006/lorenzg2006.github.io"
@@ -24,7 +24,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Lorenz Geyser"
-  pronouns         : "he/him"
+  pronouns         : ""
   bio              : "Don't wait for change - be the change you wish to see in the world."
   location         : "$HOME"
   employer         : "NULL"
