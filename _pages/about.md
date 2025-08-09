@@ -12,7 +12,7 @@ redirect_from:
 I'm Lorenz Geyser, an IT professional from Austria.
 
 ## About Me
-Born in 2006 and based in Vienna, I have a strong passion for information technology and the digital world in general. Whether it's exploring new programming languages, understanding system architectures, or diving into the latest tech trends — I'm always eager to learn and expand my knowledge.
+Born in 2006 and based in Vienna, I have a strong passion for information technology and the digital world in general. Whether it's exploring new programming languages, understanding system architectures, or diving into the latest tech trends - I'm always eager to learn and expand my knowledge.
 
 Living in Vienna gives me access to a vibrant tech community and excellent educational opportunities, which continue to fuel my interest in technology. I enjoy working on projects that challenge me to think creatively and solve problems through code and innovation.
 
