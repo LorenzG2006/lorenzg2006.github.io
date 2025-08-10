@@ -21,7 +21,7 @@ Education
 ======
 
 * Sep 2020 - Apr 2025: HTL Hollabrunn, Information Technology
-* Sep 2016 – Jun 2020: AHS Korneuburg
+* Sep 2016 - Jun 2020: AHS Korneuburg
 
 Work Experience
 ======
