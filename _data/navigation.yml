@@ -25,6 +25,9 @@ main:
     
   - title: "CV"
     url: /cv/
+  
+  - title: "Certificates"
+    url: /certificates/
     
   # - title: "CV"
   #   url: /cv-json/
