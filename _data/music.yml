@@ -19,7 +19,21 @@ artists:
   - Rise Against
   - Slipknot
 
-favorite_songs:
+albums:
+  - artist: Bring Me The Horizon
+    title: Sempiternal
+    note: Electronic infusion into metalcore; widescreen atmosphere.
+  - artist: Deftones
+    title: White Pony
+    note: Atmospheric heaviness benchmark.
+  - artist: Linkin Park
+    title: Hybrid Theory
+    note: Breakthrough nu-metal blend.
+  - artist: Linkin Park
+    title: Meteora
+    note: Polished evolution; tighter layering and cinematic edge.
+
+songs:
   - artist: Bring Me The Horizon
     title: Can You Feel My Heart
     note: Electronic pulse + soaring chorus = emotional lift without losing edge.
@@ -44,21 +58,3 @@ favorite_songs:
   - artist: Slipknot
     title: Duality
     note: Cathartic groove; resets mental load fast.
-
-albums:
-  - artist: Bring Me The Horizon
-    title: Sempiternal
-    year: 2013
-    note: Electronic infusion into metalcore; widescreen atmosphere.
-  - artist: Deftones
-    title: White Pony
-    year: 2000
-    note: Atmospheric heaviness benchmark.
-  - artist: Linkin Park
-    title: Hybrid Theory
-    year: 2000
-    note: Breakthrough nu-metal blend.
-  - artist: Linkin Park
-    title: Meteora
-    year: 2003
-    note: Polished evolution; tighter layering and cinematic edge.

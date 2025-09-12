@@ -14,14 +14,24 @@ I lean toward heavy, dynamic guitar-driven music with emotional contrast. Nu-Met
 {% assign g = site.data.music.genres %}
 {% for genre in g %}{% if forloop.first == false %} · {% endif %}{{ genre }}{% endfor %}
 
-## Artists
+## Favorite Artists
 
 {% assign a = site.data.music.artists %}
 {% for artist in a %}{% if forloop.first == false %} · {% endif %}{{ artist }}{% endfor %}
 
+## Favorite Albums
+
+{% assign albums = site.data.music.albums %}
+
+<ul>
+{% for al in albums %}
+	<li><strong>{{ al.artist }}</strong> – <em>{{ al.title }}</em>{% if al.note %}: {{ al.note }}{% endif %}</li>
+{% endfor %}
+</ul>
+
 ## Favorite Songs
 
-{% assign songs = site.data.music.favorite_songs %}
+{% assign songs = site.data.music.songs %}
 
 <ul>
 {% for s in songs %}
