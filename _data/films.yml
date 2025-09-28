@@ -1,0 +1,39 @@
+genres:
+  - Ambition & Capital Dynamics (products, power, leverage)
+  - Identity & Moral Pressure (psychology, duality, fracture)
+  - Temporal & Structural Horizons (layered time, architecture, scale)
+  - Strategy & Pursuit Mechanics (cat-and-mouse, escalation, rhythm)
+
+films:
+  - title: Catch Me If You Can
+    year: 2002
+    director: Steven Spielberg
+    note: Light tonal surface over procedural structure; pacing + identity adaptation.
+  - title: The Dark Knight
+    year: 2008
+    director: Christopher Nolan
+    note: Moral pressure + escalating set-piece logic; strategic escalation model.
+  - title: Dune
+    year: 2021
+    director: Denis Villeneuve
+    note: Textural restraint + spatial atmosphere; quiet intensity informs design aesthetics.
+  - title: Fight Club
+    year: 1999
+    director: David Fincher
+    note: Unreliable framing + identity fracture; structural tension as narrative engine.
+  - title: Inception
+    year: 2010
+    director: Christopher Nolan
+    note: Layered architecture / nested logic; abstraction of complexity with clarity.
+  - title: Interstellar
+    year: 2014
+    director: Christopher Nolan
+    note: Scale + emotional minimalism; layered time perception, long-arc focus.
+  - title: The Social Network
+    year: 2010
+    director: David Fincher
+    note: Precision dialogue + cold tension; controlled rhythm mirrors product iteration.
+  - title: The Wolf of Wall Street
+    year: 2013
+    director: Martin Scorsese
+    note: Hyper-kinetic pacing + excess-as-character; energy management & momentum.

@@ -32,6 +32,9 @@ main:
   - title: "Music"
     url: /music/
 
+  - title: "Films"
+    url: /films/
+
   # - title: "CV"
   #   url: /cv-json/
 
