@@ -27,7 +27,7 @@ Work Experience
 ======
 
 * Oct 2025 - Jun 2026: Civilian Service (Zivildienst), Austrian Red Cross (Österreichisches Rotes Kreuz)
-* Since Jul 2025: Full-time position at mo-tion
+* Jul 2025 - Sep 2025: Full-time position at mo-tion
 * Jul 2024: Internship at Hitachi Rail GTS (IT Department)
 * Aug 2023: Internship at Verbund AG (IT Department)
 
