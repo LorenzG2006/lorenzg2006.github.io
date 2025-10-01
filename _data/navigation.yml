@@ -29,11 +29,14 @@ main:
   - title: "Certificates"
     url: /certificates/
 
-  - title: "Music"
-    url: /music/
+  - title: "Books"
+    url: /books/
 
   - title: "Films"
     url: /films/
+
+  - title: "Music"
+    url: /music/
 
   # - title: "CV"
   #   url: /cv-json/

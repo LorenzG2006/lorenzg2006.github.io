@@ -23,10 +23,17 @@
     },
     "work": [
         {
+            "company": "Austrian Red Cross (Österreichisches Rotes Kreuz)",
+            "position": "Civilian Service (Zivildienst)",
+            "startDate": "2025-10",
+            "endDate": "2026-06",
+            "summary": "Supporting local emergency response and community health operations during civilian service in Korneuburg."
+        },
+        {
             "company": "mo-tion",
             "position": "IT Specialist",
             "startDate": "2025-07",
-            "endDate": "now",
+            "endDate": "2025-09",
             "summary": "Full-time position supporting event technology and multimedia productions."
         },
         {

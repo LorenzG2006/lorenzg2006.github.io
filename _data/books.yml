@@ -1,0 +1,10 @@
+books:
+  - key: ready-player-one
+    title: Ready Player One
+    author: Ernest Cline
+    year: 2011
+    status: completed
+    rating: 4
+    tags: [scifi, fantasy, cyberpunk]
+    comment: Fast-paced sci-fi adventure mixing pop culture nostalgia with themes of escapism and identity.
+    link: https://books.google.at/books/about/Ready_Player_One.html
