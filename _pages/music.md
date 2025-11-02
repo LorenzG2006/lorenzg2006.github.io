@@ -42,3 +42,27 @@ I lean toward heavy, dynamic guitar-driven music with emotional contrast. Nu-Met
 ## Why this sound
 
 Contrast between aggression and melody helps with focus and mood shifts. Layered guitars + vocal dynamics = energy without losing emotional tone.
+
+# My Spotify
+
+<p>
+	<a class="btn btn--primary" href="https://open.spotify.com/user/6beufxw5ujl85lvb3uwvbojgc" target="_blank" rel="noopener">
+		Open Spotify Profile
+	</a>
+</p>
+
+<div class="spotify-follow">
+	<iframe
+		src="https://open.spotify.com/follow/1/?uri=spotify:user:6beufxw5ujl85lvb3uwvbojgc&size=detail&theme=dark&show-count=0"
+		width="300"
+		height="56"
+		scrolling="no"
+		frameborder="0"
+		style="border:none; overflow:hidden;"
+		allowtransparency="true">
+	</iframe>
+	<noscript>
+		<a href="https://open.spotify.com/user/6beufxw5ujl85lvb3uwvbojgc" target="_blank" rel="noopener">Follow on Spotify</a>
+	</noscript>
+  
+</div>
