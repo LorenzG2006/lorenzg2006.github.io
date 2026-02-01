@@ -20,8 +20,10 @@ Personal Information
 Education
 ======
 
+* May 2025 - Jun 2025: SRDP (Standardisierte Reife- und Diplomprüfung)
 * Sep 2020 - Apr 2025: HTL Hollabrunn, Information Technology
 * Sep 2016 - Jun 2020: AHS Korneuburg
+* 2012 - 2016: VS Korneuburg
 
 Work Experience
 ======
