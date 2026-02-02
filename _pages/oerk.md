@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Zivildienst beim Roten Kreuz - Rettungssanitäter"
+title: "Rettungssanitäter beim Roten Kreuz"
 permalink: /oerk/
 author_profile: true
 ---
