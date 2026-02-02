@@ -25,6 +25,10 @@ I'm currently working at [mo-tion](https://mo-tion.at), an event company based i
 
 I attended primary school in Korneuburg, followed by lower secondary education at AHS Korneuburg. I later completed my studies at HTL Hollabrunn with a focus on Information Technology. This educational path has provided me with a strong foundation in both general academics and specialized IT knowledge.
 
+### Civil Service
+
+I also completed my **civil service (Zivildienst)** with the **Austrian Red Cross (Österreichisches Rotes Kreuz)** in Korneuburg, working as an **emergency medical technician (Rettungssanitäter)**. More details about my civil service: **[Rettungssanitäter beim Roten Kreuz](/oerk/)**.
+
 ## Contact ([nohello.club](https://www.geyser.at/nohello.club))
 
 You can reach me through the following channels. I commonly go by **LorenzG2006** online, which makes it easy to find me across various platforms:
