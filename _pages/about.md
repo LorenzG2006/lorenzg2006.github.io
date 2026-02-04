@@ -10,6 +10,7 @@ redirect_from:
 {% include base_path %}
 
 I'm Lorenz Geyser, an IT professional from Austria.
+*(Pronounced: "Guy-sir")*
 
 ## About Me
 
@@ -27,7 +28,7 @@ I attended primary school in Korneuburg, followed by lower secondary education a
 
 ### Civil Service
 
-I also completed my **civil service (Zivildienst)** with the **Austrian Red Cross (Österreichisches Rotes Kreuz)** in Korneuburg, working as an **emergency medical technician (Rettungssanitäter)**. More details about my civil service: **[Rettungssanitäter beim Roten Kreuz](/oerk/)**.
+I also completed my **civil service (Zivildienst)** with the **Austrian Red Cross (Österreichisches Rotes Kreuz)** in Korneuburg, working as an **emergency medical technician (Rettungssanitäter)**. More details about my civil service: [Rettungssanitäter beim Roten Kreuz](/oerk/).
 
 ## Contact ([nohello.club](https://www.geyser.at/nohello.club))
 
