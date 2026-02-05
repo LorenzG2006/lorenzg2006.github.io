@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 
 I'm Lorenz Geyser, an IT professional from Austria.
-*(Pronounced: "Guy-sir")*
+*(Pronounced: "guy-sir")*
 
 ## About Me
 
