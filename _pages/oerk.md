@@ -32,3 +32,12 @@ Mit der **SEF (Sicherer Einsatzfahrer)**-Qualifikation besteht die **Berechtigun
 ## Rahmenbedingungen im Zivildienst
 
 - **Keine SoSi-Berechtigung** (keine Sonder- und Wegerechte / kein Blaulicht-/Folgetonhorn-Fahren)
+
+<!-- 
+
+---
+
+## Persönliche Erfahrungen
+
+Mehr über meine persönlichen Erfahrungen und Erlebnisse während meiner Zeit als Rettungssanitäter beim Roten Kreuz findest du in meinem [Blog-Beitrag über meinen Zivildienst](/oerk-experience/).
+-->
