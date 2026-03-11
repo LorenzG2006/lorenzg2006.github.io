@@ -33,6 +33,10 @@ Mit der **SEF (Sicherer Einsatzfahrer)**-Qualifikation besteht die **Berechtigun
 
 - **Keine SoSi-Berechtigung** (keine Sonder- und Wegerechte / kein Blaulicht-/Folgetonhorn-Fahren)
 
+
+![Rotes Kreuz]({{ base_path }}/files/rk.png)
+
+
 <!-- 
 
 ---
