@@ -6,7 +6,6 @@ redirect_from:
   - /about/
   - /about.html
 ---
-
 {% include base_path %}
 
 I'm Lorenz Geyser, an IT professional from Austria.
@@ -22,11 +21,15 @@ Living in Vienna gives me access to a vibrant tech community and excellent educa
 
 I'm currently working at [mo-tion](https://mo-tion.at), an event company based in Vienna that specializes in interactive presentations, mappings, and real-time sports graphics. This role gives me hands-on experience in the event technology sector, where I help create engaging visual experiences and support innovative multimedia productions for a variety of events.
 
+## My Music
+
+Music is an important part of my creative life. I started my band, [Watch Me Suffocate](https://watchmesuffocate.com), at 18, and it has been a true group project from day one. The name reflects the intense and emotional atmosphere we want to express in our music. Working together on songwriting, production, and live performances taught me a lot about collaboration, communication, and turning ideas into something people can experience.
+
 ## Background
 
 I attended primary school in Korneuburg, followed by lower secondary education at AHS Korneuburg. I later completed my studies at HTL Hollabrunn with a focus on Information Technology. This educational path has provided me with a strong foundation in both general academics and specialized IT knowledge.
 
-### Civil Service
+## Civil Service
 
 I also completed my **civil service (Zivildienst)** with the **Austrian Red Cross (Österreichisches Rotes Kreuz)** in Korneuburg, working as an **emergency medical technician (Rettungssanitäter)**. More details about my civil service: [Rettungssanitäter beim Roten Kreuz](/oerk/).
 
