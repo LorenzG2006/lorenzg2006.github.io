@@ -29,6 +29,10 @@ Music is an important part of my creative life. I started my band, [Watch Me Suf
 
 I attended primary school in Korneuburg, followed by lower secondary education at AHS Korneuburg. I later completed my studies at HTL Hollabrunn with a focus on Information Technology. This educational path has provided me with a strong foundation in both general academics and specialized IT knowledge.
 
+## Studies
+
+I've just enrolled in Informatics at TU Wien in Vienna, where I will be deepening my knowledge in computer science and related technical fields.
+
 ## Civil Service
 
 I also completed my **civil service (Zivildienst)** with the **Austrian Red Cross (Österreichisches Rotes Kreuz)** in Korneuburg, working as an **emergency medical technician (Rettungssanitäter)**. More details about my civil service: [Rettungssanitäter beim Roten Kreuz](/oerk/).
