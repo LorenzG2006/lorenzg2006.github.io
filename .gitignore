@@ -20,3 +20,6 @@ vendor/
 .vscode/
 
 /_data/cv-full.json
+
+# Rohmaterial für die Website (enthält private Dokumente) – niemals committen
+/DATA/
