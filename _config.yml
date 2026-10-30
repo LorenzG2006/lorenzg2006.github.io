@@ -13,7 +13,7 @@ title                    : "Lorenz Geyser"
 title_separator          : "-"
 name                     : &name "Lorenz Geyser"
 description              : &description "Personal Website"
-url                      : https://lorenzg2006.github.io
+url                      : https://geyser.at
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "lorenzg2006/lorenzg2006.github.io"
 
