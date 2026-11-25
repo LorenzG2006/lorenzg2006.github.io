@@ -20,6 +20,9 @@ main:
   - title: "Portfolio"
     url: /portfolio/
 
+  - title: "TU Wien"
+    url: /tuwien/
+
   # - title: "Blog Posts"
   #   url: /year-archive/
 

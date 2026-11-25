@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Eigene Komponenten (Relaunch 2026)
+   Nur Theme-Variablen verwenden, damit alles auch im Dark Theme passt.
+   ========================================================================== */
+
+/* LVA-Steckbrief */
+.lva-steckbrief {
+  th {
+    width: 30%;
+  }
+}
+
+/* LVA-Kompendium: Formeln, Beweise zum Aufklappen */
+.page__content {
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25em 0;
+  }
+
+  details.beweis {
+    margin: 0.5em 0 1em;
+    padding: 0.5em 1em;
+    border-left: 3px solid var(--global-border-color);
+    font-size: $type-size-5;
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    &[open] summary {
+      margin-bottom: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+---
+layout: single
+---
+{% comment %}
+  Steckbrief einer Lehrveranstaltung (Collection _lva, URL /tuwien/<name>/).
+  Front Matter: title, kuerzel, lva_nr, typ, semester (z. B. 2026W), ects, status, tiss
+  Optional: math: true (Formeln mit KaTeX), unlisted: true (nicht in der Tabelle auf /tuwien/)
+{% endcomment %}
+{% if page.math %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.querySelector('.page__content') || document.body, {delimiters: [{left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}], throwOnError: false});"></script>
+{% endif %}
+{% assign sem_jahr = page.semester | slice: 0, 4 %}
+{% assign sem_art = page.semester | slice: 4, 1 %}
+<table class="lva-steckbrief">
+  <tbody>
+    <tr><th>LVA-Nr.</th><td>{{ page.lva_nr }}{% if page.kuerzel %} ({{ page.kuerzel }}){% endif %}</td></tr>
+    <tr><th>Typ</th><td>{{ page.typ }}</td></tr>
+    <tr><th>Semester</th><td>{% if sem_art == "W" %}Wintersemester{% else %}Sommersemester{% endif %} {{ sem_jahr }}</td></tr>
+    <tr><th>ECTS</th><td>{% if page.ects and page.ects != 0 %}{{ page.ects }}{% else %}–{% endif %}</td></tr>
+    {% if page.sws %}<tr><th>Semesterstunden</th><td>{{ page.sws }}</td></tr>{% endif %}
+    <tr><th>Status</th><td>{{ page.status }}</td></tr>
+    {% if page.tiss %}<tr><th>TISS</th><td><a href="{{ page.tiss }}" target="_blank" rel="noopener">Lehrveranstaltung in TISS</a></td></tr>{% endif %}
+  </tbody>
+</table>
+
+{{ content }}
+
+<p><a href="{{ '/tuwien/' | relative_url }}">← Alle Lehrveranstaltungen</a></p>
