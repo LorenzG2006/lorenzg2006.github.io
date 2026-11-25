@@ -21,5 +21,9 @@ vendor/
 
 /_data/cv-full.json
 
-# Rohmaterial für die Website (enthält private Dokumente) – niemals committen
+# Rohmaterial für die Website (enthält private Dokumente)
 /DATA/
+
+# Lokales Startskript für die Vorschau
+/serve.ps1
+/serve.cmd

@@ -26,8 +26,8 @@ author:
   name             : "Lorenz Geyser"
   pronouns         : ""
   bio              : "Don't wait for change - be the change you wish to see in the world."
-  location         : "$HOME"
-  employer         : "NULL"
+  location         : "$HOME" # Vienna, Austria
+  employer         : "NULL" # mo-tion interactive / TU Wien
   uri              : "https://www.geyser.at"
   email            : "lorenz@geyser.at" 
 
@@ -65,7 +65,7 @@ author:
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
-  soundcloud       : # Username
+  soundcloud       : "lorenzg2006"
   steam            : "lorenzg2006"
   telegram         : # URL
   tumblr           : # Username
@@ -188,6 +188,12 @@ exclude:
   - README
   - tmp
   - vendor
+  - markdown_generator
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
+  - scripts
 keep_files:
   - .git
   - .svn
@@ -229,6 +235,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  lva:
+    output: true
+    permalink: /tuwien/:name/
 
 
 # These settings control how pages and collections are included in the site
@@ -286,6 +295,14 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+  # _lva (TU Wien, eine Seite pro Lehrveranstaltung)
+  - scope:
+      path: ""
+      type: lva
+    values:
+      layout: lva
+      author_profile: true
+      lang: de
 
 
 # Sass/SCSS
