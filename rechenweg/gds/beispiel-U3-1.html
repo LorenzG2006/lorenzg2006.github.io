@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDS U3.1: NRZ-L, NRZ-M und NRZ-S aus einem Pegelverlauf ablesen · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#c2410c" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link active" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">GDS</a><span>›</span><a href="index.html#kap-3">Übung 3 – Codierungs- und Informationstheorie</a><span>›</span><span>Bsp. U3.1</span></nav>
+<div class="printhead">Rechenweg · Grundzüge digitaler Systeme · Übung 3 – Codierungs- und Informationstheorie</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">GDS</span><span>Beispiel U3.1</span><span class="dot">·</span><span class="ex-topic">Leitungscodes (NRZ-Varianten)</span></div>
+<h1>NRZ-L, NRZ-M und NRZ-S aus einem Pegelverlauf ablesen</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="beispiel-U2-8.html"  title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="beispiel-U3-2.html"  title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/GDS_Bsp_U3-1.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="gds/U3.1" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">NRZ-L, NRZ-M und NRZ-S aus einem Pegelverlauf ablesen</div><table>
+<tr><th>Kurs</th><td>Grundzüge digitaler Systeme</td></tr><tr><th>Nummer</th><td>U3.1</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-3">Übung 3 – Codierungs- und Informationstheorie</a></td></tr><tr><th>Thema</th><td>Leitungscodes (NRZ-Varianten)</td></tr>
+<tr><th>Navigation</th><td><a href="beispiel-U2-8.html">← U2.8</a> <a href="beispiel-U3-2.html">U3.2 →</a></td></tr>
+<tr><th>PDF</th><td><a href="pdf/GDS_Bsp_U3-1.pdf">GDS_Bsp_U3-1.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/gds/uebungen/UE3_Angabe.pdf#page=1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p>Der folgende Pegelverlauf umfasst zwölf Bitintervalle. Unmittelbar vor dem ersten Bitintervall liegt bereits derselbe Pegel an wie im ersten Bitintervall; am Beginn tritt daher kein Pegelwechsel auf.</p>
+<figure><svg viewBox="0 0 540 90" width="540" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"><line x1="60" y1="10" x2="60" y2="80" stroke="#bbb" stroke-width="1"/><line x1="98" y1="10" x2="98" y2="80" stroke="#bbb" stroke-width="1"/><line x1="136" y1="10" x2="136" y2="80" stroke="#bbb" stroke-width="1"/><line x1="174" y1="10" x2="174" y2="80" stroke="#bbb" stroke-width="1"/><line x1="212" y1="10" x2="212" y2="80" stroke="#bbb" stroke-width="1"/><line x1="250" y1="10" x2="250" y2="80" stroke="#bbb" stroke-width="1"/><line x1="288" y1="10" x2="288" y2="80" stroke="#bbb" stroke-width="1"/><line x1="326" y1="10" x2="326" y2="80" stroke="#bbb" stroke-width="1"/><line x1="364" y1="10" x2="364" y2="80" stroke="#bbb" stroke-width="1"/><line x1="402" y1="10" x2="402" y2="80" stroke="#bbb" stroke-width="1"/><line x1="440" y1="10" x2="440" y2="80" stroke="#bbb" stroke-width="1"/><line x1="478" y1="10" x2="478" y2="80" stroke="#bbb" stroke-width="1"/><line x1="516" y1="10" x2="516" y2="80" stroke="#bbb" stroke-width="1"/><path d="M40,22 H60 H98 V62 H136 V22 H174 H212 V62 H250 V22 H288 H326 V62 H364 H402 H440 V22 H478 V62 H516" fill="none" stroke="#000" stroke-width="3"/><text x="4" y="66">Pegel</text></svg><figcaption>Pegelverlauf über zwölf Bitintervalle</figcaption></figure>
+
+<p>a) Interpretieren Sie den Pegelverlauf als NRZ-L-Codierung und geben Sie die übertragene Bitfolge an. Dabei codiert ein hoher Pegel eine logische 1.</p>
+<p>b) Interpretieren Sie denselben Verlauf als NRZ-M-Codierung. Bei NRZ-M codiert ein Pegelwechsel eine logische 1.</p>
+<p>c) Interpretieren Sie den Verlauf als NRZ-S-Codierung. Bei NRZ-S codiert ein Pegelwechsel eine logische 0.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>NRZ (<em>Non Return to Zero</em>) kennt nur zwei Pegel, high und low; innerhalb eines Bitintervalls bleibt der Pegel konstant. Die drei Varianten lesen dasselbe Signal verschieden:</p>
+<ul>
+<li><strong>NRZ-L</strong> (<em>Level</em>): Der <strong>Pegel selbst</strong> ist das Bit (high = 1, low = 0).</li>
+<li><strong>NRZ-M</strong> (<em>Mark</em>): Entscheidend ist, ob am <strong>Beginn</strong> des Bitintervalls ein <strong>Pegelwechsel</strong> stattfindet: Wechsel = 1, kein Wechsel = 0.</li>
+<li><strong>NRZ-S</strong> (<em>Space</em>): ebenfalls Wechsel am Intervallbeginn, aber umgekehrt: Wechsel = 0, kein Wechsel = 1.</li>
+</ul>
+<p>Man liest also einmal die <strong>Pegel</strong> und einmal die <strong>Flanken an den Intervallgrenzen</strong> ab. NRZ-S ist dann einfach das bitweise Komplement von NRZ-M.</p>
+</div></div>
+<h3 id="loesungsvors-pegel-und-pegelwechsel-ablesen-1">Pegel und Pegelwechsel ablesen</h3>
+<p>Wir nummerieren die Bitintervalle zwischen den grauen Hilfslinien von links nach rechts mit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> bis <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn></mrow><annotation encoding="application/x-tex">12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span> und lesen in jedem Intervall den Pegel ab (H = high, L = low). Zusätzlich vergleichen wir den Pegel mit dem des <strong>vorigen</strong> Intervalls; für Intervall 1 ist der „vorige“ Pegel laut Angabe derselbe (high), also kein Wechsel.</p>
+<table>
+<thead>
+<tr>
+<th>Intervall</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pegel</td>
+<td>H</td>
+<td>L</td>
+<td>H</td>
+<td>H</td>
+<td>L</td>
+<td>H</td>
+<td>H</td>
+<td>L</td>
+<td>L</td>
+<td>L</td>
+<td>H</td>
+<td>L</td>
+</tr>
+<tr>
+<td>Wechsel am Beginn?</td>
+<td>nein</td>
+<td>ja</td>
+<td>ja</td>
+<td>nein</td>
+<td>ja</td>
+<td>ja</td>
+<td>nein</td>
+<td>ja</td>
+<td>nein</td>
+<td>nein</td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+</tbody></table>
+<p>Die Wechsel-Zeile entsteht durch paarweisen Vergleich: Intervall 2 (L) gegen 1 (H) → Wechsel; 3 (H) gegen 2 (L) → Wechsel; 4 (H) gegen 3 (H) → kein Wechsel; usw.</p>
+<figure><svg viewBox="0 0 540 136" width="540" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13"><line x1="60" y1="16" x2="60" y2="70" stroke="#bbb" stroke-width="1"/><line x1="98" y1="16" x2="98" y2="70" stroke="#bbb" stroke-width="1"/><line x1="136" y1="16" x2="136" y2="70" stroke="#bbb" stroke-width="1"/><line x1="174" y1="16" x2="174" y2="70" stroke="#bbb" stroke-width="1"/><line x1="212" y1="16" x2="212" y2="70" stroke="#bbb" stroke-width="1"/><line x1="250" y1="16" x2="250" y2="70" stroke="#bbb" stroke-width="1"/><line x1="288" y1="16" x2="288" y2="70" stroke="#bbb" stroke-width="1"/><line x1="326" y1="16" x2="326" y2="70" stroke="#bbb" stroke-width="1"/><line x1="364" y1="16" x2="364" y2="70" stroke="#bbb" stroke-width="1"/><line x1="402" y1="16" x2="402" y2="70" stroke="#bbb" stroke-width="1"/><line x1="440" y1="16" x2="440" y2="70" stroke="#bbb" stroke-width="1"/><line x1="478" y1="16" x2="478" y2="70" stroke="#bbb" stroke-width="1"/><line x1="516" y1="16" x2="516" y2="70" stroke="#bbb" stroke-width="1"/><path d="M40,26 H60 H98 V60 H136 V26 H174 H212 V60 H250 V26 H288 H326 V60 H364 H402 H440 V26 H478 V60 H516" fill="none" stroke="#000" stroke-width="3"/><text x="79" y="11" text-anchor="middle" font-size="10" fill="#666">1</text><text x="79" y="90" text-anchor="middle" fill="#000">1</text><text x="79" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="79" y="130" text-anchor="middle" fill="#14866d">1</text><text x="117" y="11" text-anchor="middle" font-size="10" fill="#666">2</text><text x="117" y="90" text-anchor="middle" fill="#000">0</text><text x="117" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="117" y="130" text-anchor="middle" fill="#14866d">0</text><text x="155" y="11" text-anchor="middle" font-size="10" fill="#666">3</text><text x="155" y="90" text-anchor="middle" fill="#000">1</text><text x="155" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="155" y="130" text-anchor="middle" fill="#14866d">0</text><text x="193" y="11" text-anchor="middle" font-size="10" fill="#666">4</text><text x="193" y="90" text-anchor="middle" fill="#000">1</text><text x="193" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="193" y="130" text-anchor="middle" fill="#14866d">1</text><text x="231" y="11" text-anchor="middle" font-size="10" fill="#666">5</text><text x="231" y="90" text-anchor="middle" fill="#000">0</text><text x="231" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="231" y="130" text-anchor="middle" fill="#14866d">0</text><text x="269" y="11" text-anchor="middle" font-size="10" fill="#666">6</text><text x="269" y="90" text-anchor="middle" fill="#000">1</text><text x="269" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="269" y="130" text-anchor="middle" fill="#14866d">0</text><text x="307" y="11" text-anchor="middle" font-size="10" fill="#666">7</text><text x="307" y="90" text-anchor="middle" fill="#000">1</text><text x="307" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="307" y="130" text-anchor="middle" fill="#14866d">1</text><text x="345" y="11" text-anchor="middle" font-size="10" fill="#666">8</text><text x="345" y="90" text-anchor="middle" fill="#000">0</text><text x="345" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="345" y="130" text-anchor="middle" fill="#14866d">0</text><text x="383" y="11" text-anchor="middle" font-size="10" fill="#666">9</text><text x="383" y="90" text-anchor="middle" fill="#000">0</text><text x="383" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="383" y="130" text-anchor="middle" fill="#14866d">1</text><text x="421" y="11" text-anchor="middle" font-size="10" fill="#666">10</text><text x="421" y="90" text-anchor="middle" fill="#000">0</text><text x="421" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="421" y="130" text-anchor="middle" fill="#14866d">1</text><text x="459" y="11" text-anchor="middle" font-size="10" fill="#666">11</text><text x="459" y="90" text-anchor="middle" fill="#000">1</text><text x="459" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="459" y="130" text-anchor="middle" fill="#14866d">0</text><text x="497" y="11" text-anchor="middle" font-size="10" fill="#666">12</text><text x="497" y="90" text-anchor="middle" fill="#000">0</text><text x="497" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="497" y="130" text-anchor="middle" fill="#14866d">0</text><circle cx="98" cy="43" r="4" fill="#d33"/><circle cx="136" cy="43" r="4" fill="#d33"/><circle cx="212" cy="43" r="4" fill="#d33"/><circle cx="250" cy="43" r="4" fill="#d33"/><circle cx="326" cy="43" r="4" fill="#d33"/><circle cx="440" cy="43" r="4" fill="#d33"/><circle cx="478" cy="43" r="4" fill="#d33"/><text x="2" y="90" font-size="11" fill="#000">NRZ-L</text><text x="2" y="110" font-size="11" fill="#3366cc">NRZ-M</text><text x="2" y="130" font-size="11" fill="#14866d">NRZ-S</text></svg><figcaption>Bitintervalle 1–12, Pegelwechsel (rote Punkte) und die drei Interpretationen</figcaption></figure>
+
+<h3 id="loesungsvors-a-nrz-l-2">a) NRZ-L</h3>
+<p>Hoher Pegel = 1, niedriger Pegel = 0. Direkt aus der Pegel-Zeile (H ↦ 1, L ↦ 0):</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>H L H H L H H L L L H L</mtext><mtext>  </mtext><mo>⟼</mo><mtext>  </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn></mrow><annotation encoding="application/x-tex">\text{H L H H L H H L L L H L} \;\longmapsto\; 1\,0\,1\,1\,0\,1\,1\,0\,0\,0\,1\,0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6943em;vertical-align:-0.011em;"></span><span class="mord text"><span class="mord">H L H H L H H L L L H L</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟼</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span></span></span></span></span></p>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>NRZ-L: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1011</mn><mtext>  </mtext><mn>0110</mn><mtext>  </mtext><mn>0010</mn></mrow><annotation encoding="application/x-tex">1011\;0110\;0010</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1011</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0110</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0010</span></span></span></span></p>
+</div></div>
+<h3 id="loesungsvors-b-nrz-m-3">b) NRZ-M</h3>
+<p>Pegelwechsel am Beginn des Intervalls = 1, kein Wechsel = 0. Aus der Wechsel-Zeile (ja ↦ 1, nein ↦ 0):</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>nein ja ja nein ja ja nein ja nein nein ja ja</mtext><mtext>  </mtext><mo>⟼</mo><mtext>  </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>0</mn><mtext> </mtext><mn>1</mn><mtext> </mtext><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{nein ja ja nein ja ja nein ja nein nein ja ja} \;\longmapsto\; 0\,1\,1\,0\,1\,1\,0\,1\,0\,0\,1\,1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">nein ja ja nein ja ja nein ja nein nein ja ja</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟼</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span></span></span></span></span></p>
+<p>Entscheidend ist das erste Bit: Weil vor Intervall 1 schon high anliegt, gibt es dort <strong>keinen</strong> Wechsel, also ist das erste Bit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>.</p>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>NRZ-M: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0110</mn><mtext>  </mtext><mn>1101</mn><mtext>  </mtext><mn>0011</mn></mrow><annotation encoding="application/x-tex">0110\;1101\;0011</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0110</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1101</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0011</span></span></span></span></p>
+</div></div>
+<h3 id="loesungsvors-c-nrz-s-4">c) NRZ-S</h3>
+<p>Pegelwechsel = 0, kein Wechsel = 1 – genau umgekehrt zu NRZ-M. Also bitweise invertieren:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mrow><mn>0110</mn><mtext> </mtext><mn>1101</mn><mtext> </mtext><mn>0011</mn></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>1001</mn><mtext> </mtext><mn>0010</mn><mtext> </mtext><mn>1100</mn></mrow><annotation encoding="application/x-tex">\overline{0110\,1101\,0011} = 1001\,0010\,1100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0110</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1101</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0011</span></span></span><span style="top:-3.7644em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1001</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0010</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1100</span></span></span></span></span></p>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>NRZ-S: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1001</mn><mtext>  </mtext><mn>0010</mn><mtext>  </mtext><mn>1100</mn></mrow><annotation encoding="application/x-tex">1001\;0010\;1100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1001</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0010</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1100</span></span></span></span></p>
+</div></div>
+<div class="box box-probe"><div class="box-title">Rückwärts codieren</div><div class="box-body"><p>NRZ-M aus b) wieder codieren, Startpegel high: Bit 0 → bleibt H; 1 → L; 1 → H; 0 → H; 1 → L; 1 → H; 0 → H; 1 → L; 0 → L; 0 → L; 1 → H; 1 → L. Ergibt H L H H L H H L L L H L – genau der gegebene Verlauf. ✓ (Mit Python für alle drei Varianten nachgeprüft.) Außerdem: Die Anzahl der Einsen in b) (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>) ist gleich der Anzahl der Flanken im Bild (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span> rote Punkte). ✓</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-def"><div class="box-title">NRZ-Varianten (VO)</div><div class="box-body"><ul>
+<li><strong>NRZ-L</strong> codiert 1 mit „high“, 0 mit „low“.</li>
+<li><strong>NRZ-M</strong> bewirkt einen Pegelwechsel bei 1 (bei 0 bleibt der Pegel).</li>
+<li><strong>NRZ-S</strong> bewirkt einen Pegelwechsel bei 0 (bei 1 bleibt der Pegel).</li>
+</ul>
+<p>Die Wechsel finden jeweils an der Grenze <strong>zu Beginn</strong> eines Bitintervalls statt. Bei NRZ-M/S hängt die Bedeutung also nicht vom absoluten Pegel ab, sondern nur von der Änderung – der Code ist unempfindlich gegen vertauschte Leitungen (Polarität).</p>
+</div></div>
+<div class="box box-merke"><div class="box-title">Zusammenhang</div><div class="box-body"><p>NRZ-S ist das Komplement von NRZ-M. Und: NRZ-M-Bit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> = (NRZ-L-Bit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊕</mo></mrow><annotation encoding="application/x-tex">\oplus</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">⊕</span></span></span></span> (NRZ-L-Bit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>), mit dem Pegel vor dem ersten Intervall als „Bit 0“.</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li>Bei NRZ-M/S den <strong>Pegel</strong> statt des <strong>Wechsels</strong> ablesen.</li>
+<li>Am Anfang einen Wechsel „erfinden“ – hier steht ausdrücklich, dass vor Intervall 1 derselbe Pegel anliegt, das erste Bit ist also bei NRZ-M <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> und bei NRZ-S <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</li>
+<li>Lange konstante Strecken (Intervalle 8–10) falsch abzählen: Die Hilfslinien zählen, nicht die Länge schätzen.</li>
+<li>NRZ-M und NRZ-S verwechseln (M wie <em>Mark</em> = 1 bei Wechsel).</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-U3-2.html">U3.2</a>, <a href="beispiel-U3-4.html">U3.4</a>.</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="gds/U3.1" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><a class="pager prev" href="beispiel-U2-8.html"><span class="pager-dir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Vorheriges</span><span class="pager-title"><b>Bsp. U2.8</b> Genauigkeit von float – Summation, Absorption, Assoziativität</span></a><a class="pager next" href="beispiel-U3-2.html"><span class="pager-dir">Nächstes <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><span class="pager-title"><b>Bsp. U3.2</b> Luhn-Prüfziffer berechnen und Zahlendreher prüfen</span></a></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-pegel-und-pegelwechsel-ablesen-1">Pegel und Pegelwechsel ablesen</a></li><li><a href="#loesungsvors-a-nrz-l-2">a) NRZ-L</a></li><li><a href="#loesungsvors-b-nrz-m-3">b) NRZ-M</a></li><li><a href="#loesungsvors-c-nrz-s-4">c) NRZ-S</a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">Übung 3 – Codierungs- und Informationstheorie</div><div class="minimap" data-minimap="gds" data-kap="2" data-current="U3.1"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Grundzüge digitaler Systeme" data-nr="U3.1">
+## Angabe
+
+Der folgende Pegelverlauf umfasst zwölf Bitintervalle. Unmittelbar vor dem ersten Bitintervall liegt bereits derselbe Pegel an wie im ersten Bitintervall; am Beginn tritt daher kein Pegelwechsel auf.
+
+<figure><svg viewBox="0 0 540 90" width="540" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"><line x1="60" y1="10" x2="60" y2="80" stroke="#bbb" stroke-width="1"/><line x1="98" y1="10" x2="98" y2="80" stroke="#bbb" stroke-width="1"/><line x1="136" y1="10" x2="136" y2="80" stroke="#bbb" stroke-width="1"/><line x1="174" y1="10" x2="174" y2="80" stroke="#bbb" stroke-width="1"/><line x1="212" y1="10" x2="212" y2="80" stroke="#bbb" stroke-width="1"/><line x1="250" y1="10" x2="250" y2="80" stroke="#bbb" stroke-width="1"/><line x1="288" y1="10" x2="288" y2="80" stroke="#bbb" stroke-width="1"/><line x1="326" y1="10" x2="326" y2="80" stroke="#bbb" stroke-width="1"/><line x1="364" y1="10" x2="364" y2="80" stroke="#bbb" stroke-width="1"/><line x1="402" y1="10" x2="402" y2="80" stroke="#bbb" stroke-width="1"/><line x1="440" y1="10" x2="440" y2="80" stroke="#bbb" stroke-width="1"/><line x1="478" y1="10" x2="478" y2="80" stroke="#bbb" stroke-width="1"/><line x1="516" y1="10" x2="516" y2="80" stroke="#bbb" stroke-width="1"/><path d="M40,22 H60 H98 V62 H136 V22 H174 H212 V62 H250 V22 H288 H326 V62 H364 H402 H440 V22 H478 V62 H516" fill="none" stroke="#000" stroke-width="3"/><text x="4" y="66">Pegel</text></svg><figcaption>Pegelverlauf über zwölf Bitintervalle</figcaption></figure>
+
+a) Interpretieren Sie den Pegelverlauf als NRZ-L-Codierung und geben Sie die übertragene Bitfolge an. Dabei codiert ein hoher Pegel eine logische 1.
+
+b) Interpretieren Sie denselben Verlauf als NRZ-M-Codierung. Bei NRZ-M codiert ein Pegelwechsel eine logische 1.
+
+c) Interpretieren Sie den Verlauf als NRZ-S-Codierung. Bei NRZ-S codiert ein Pegelwechsel eine logische 0.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+NRZ (*Non Return to Zero*) kennt nur zwei Pegel, high und low; innerhalb eines Bitintervalls bleibt der Pegel konstant. Die drei Varianten lesen dasselbe Signal verschieden:
+
+- **NRZ-L** (*Level*): Der **Pegel selbst** ist das Bit (high = 1, low = 0).
+- **NRZ-M** (*Mark*): Entscheidend ist, ob am **Beginn** des Bitintervalls ein **Pegelwechsel** stattfindet: Wechsel = 1, kein Wechsel = 0.
+- **NRZ-S** (*Space*): ebenfalls Wechsel am Intervallbeginn, aber umgekehrt: Wechsel = 0, kein Wechsel = 1.
+
+Man liest also einmal die **Pegel** und einmal die **Flanken an den Intervallgrenzen** ab. NRZ-S ist dann einfach das bitweise Komplement von NRZ-M.
+:::
+
+### Pegel und Pegelwechsel ablesen
+
+Wir nummerieren die Bitintervalle zwischen den grauen Hilfslinien von links nach rechts mit $1$ bis $12$ und lesen in jedem Intervall den Pegel ab (H = high, L = low). Zusätzlich vergleichen wir den Pegel mit dem des **vorigen** Intervalls; für Intervall 1 ist der „vorige“ Pegel laut Angabe derselbe (high), also kein Wechsel.
+
+| Intervall | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Pegel | H | L | H | H | L | H | H | L | L | L | H | L |
+| Wechsel am Beginn? | nein | ja | ja | nein | ja | ja | nein | ja | nein | nein | ja | ja |
+
+Die Wechsel-Zeile entsteht durch paarweisen Vergleich: Intervall 2 (L) gegen 1 (H) → Wechsel; 3 (H) gegen 2 (L) → Wechsel; 4 (H) gegen 3 (H) → kein Wechsel; usw.
+
+<figure><svg viewBox="0 0 540 136" width="540" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13"><line x1="60" y1="16" x2="60" y2="70" stroke="#bbb" stroke-width="1"/><line x1="98" y1="16" x2="98" y2="70" stroke="#bbb" stroke-width="1"/><line x1="136" y1="16" x2="136" y2="70" stroke="#bbb" stroke-width="1"/><line x1="174" y1="16" x2="174" y2="70" stroke="#bbb" stroke-width="1"/><line x1="212" y1="16" x2="212" y2="70" stroke="#bbb" stroke-width="1"/><line x1="250" y1="16" x2="250" y2="70" stroke="#bbb" stroke-width="1"/><line x1="288" y1="16" x2="288" y2="70" stroke="#bbb" stroke-width="1"/><line x1="326" y1="16" x2="326" y2="70" stroke="#bbb" stroke-width="1"/><line x1="364" y1="16" x2="364" y2="70" stroke="#bbb" stroke-width="1"/><line x1="402" y1="16" x2="402" y2="70" stroke="#bbb" stroke-width="1"/><line x1="440" y1="16" x2="440" y2="70" stroke="#bbb" stroke-width="1"/><line x1="478" y1="16" x2="478" y2="70" stroke="#bbb" stroke-width="1"/><line x1="516" y1="16" x2="516" y2="70" stroke="#bbb" stroke-width="1"/><path d="M40,26 H60 H98 V60 H136 V26 H174 H212 V60 H250 V26 H288 H326 V60 H364 H402 H440 V26 H478 V60 H516" fill="none" stroke="#000" stroke-width="3"/><text x="79" y="11" text-anchor="middle" font-size="10" fill="#666">1</text><text x="79" y="90" text-anchor="middle" fill="#000">1</text><text x="79" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="79" y="130" text-anchor="middle" fill="#14866d">1</text><text x="117" y="11" text-anchor="middle" font-size="10" fill="#666">2</text><text x="117" y="90" text-anchor="middle" fill="#000">0</text><text x="117" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="117" y="130" text-anchor="middle" fill="#14866d">0</text><text x="155" y="11" text-anchor="middle" font-size="10" fill="#666">3</text><text x="155" y="90" text-anchor="middle" fill="#000">1</text><text x="155" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="155" y="130" text-anchor="middle" fill="#14866d">0</text><text x="193" y="11" text-anchor="middle" font-size="10" fill="#666">4</text><text x="193" y="90" text-anchor="middle" fill="#000">1</text><text x="193" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="193" y="130" text-anchor="middle" fill="#14866d">1</text><text x="231" y="11" text-anchor="middle" font-size="10" fill="#666">5</text><text x="231" y="90" text-anchor="middle" fill="#000">0</text><text x="231" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="231" y="130" text-anchor="middle" fill="#14866d">0</text><text x="269" y="11" text-anchor="middle" font-size="10" fill="#666">6</text><text x="269" y="90" text-anchor="middle" fill="#000">1</text><text x="269" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="269" y="130" text-anchor="middle" fill="#14866d">0</text><text x="307" y="11" text-anchor="middle" font-size="10" fill="#666">7</text><text x="307" y="90" text-anchor="middle" fill="#000">1</text><text x="307" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="307" y="130" text-anchor="middle" fill="#14866d">1</text><text x="345" y="11" text-anchor="middle" font-size="10" fill="#666">8</text><text x="345" y="90" text-anchor="middle" fill="#000">0</text><text x="345" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="345" y="130" text-anchor="middle" fill="#14866d">0</text><text x="383" y="11" text-anchor="middle" font-size="10" fill="#666">9</text><text x="383" y="90" text-anchor="middle" fill="#000">0</text><text x="383" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="383" y="130" text-anchor="middle" fill="#14866d">1</text><text x="421" y="11" text-anchor="middle" font-size="10" fill="#666">10</text><text x="421" y="90" text-anchor="middle" fill="#000">0</text><text x="421" y="110" text-anchor="middle" fill="#3366cc">0</text><text x="421" y="130" text-anchor="middle" fill="#14866d">1</text><text x="459" y="11" text-anchor="middle" font-size="10" fill="#666">11</text><text x="459" y="90" text-anchor="middle" fill="#000">1</text><text x="459" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="459" y="130" text-anchor="middle" fill="#14866d">0</text><text x="497" y="11" text-anchor="middle" font-size="10" fill="#666">12</text><text x="497" y="90" text-anchor="middle" fill="#000">0</text><text x="497" y="110" text-anchor="middle" fill="#3366cc">1</text><text x="497" y="130" text-anchor="middle" fill="#14866d">0</text><circle cx="98" cy="43" r="4" fill="#d33"/><circle cx="136" cy="43" r="4" fill="#d33"/><circle cx="212" cy="43" r="4" fill="#d33"/><circle cx="250" cy="43" r="4" fill="#d33"/><circle cx="326" cy="43" r="4" fill="#d33"/><circle cx="440" cy="43" r="4" fill="#d33"/><circle cx="478" cy="43" r="4" fill="#d33"/><text x="2" y="90" font-size="11" fill="#000">NRZ-L</text><text x="2" y="110" font-size="11" fill="#3366cc">NRZ-M</text><text x="2" y="130" font-size="11" fill="#14866d">NRZ-S</text></svg><figcaption>Bitintervalle 1–12, Pegelwechsel (rote Punkte) und die drei Interpretationen</figcaption></figure>
+
+### a) NRZ-L
+
+Hoher Pegel = 1, niedriger Pegel = 0. Direkt aus der Pegel-Zeile (H ↦ 1, L ↦ 0):
+
+$$\text{H L H H L H H L L L H L} \;\longmapsto\; 1\,0\,1\,1\,0\,1\,1\,0\,0\,0\,1\,0$$
+
+:::ergebnis
+NRZ-L: $1011\;0110\;0010$
+:::
+
+### b) NRZ-M
+
+Pegelwechsel am Beginn des Intervalls = 1, kein Wechsel = 0. Aus der Wechsel-Zeile (ja ↦ 1, nein ↦ 0):
+
+$$\text{nein ja ja nein ja ja nein ja nein nein ja ja} \;\longmapsto\; 0\,1\,1\,0\,1\,1\,0\,1\,0\,0\,1\,1$$
+
+Entscheidend ist das erste Bit: Weil vor Intervall 1 schon high anliegt, gibt es dort **keinen** Wechsel, also ist das erste Bit $0$.
+
+:::ergebnis
+NRZ-M: $0110\;1101\;0011$
+:::
+
+### c) NRZ-S
+
+Pegelwechsel = 0, kein Wechsel = 1 – genau umgekehrt zu NRZ-M. Also bitweise invertieren:
+
+$$\overline{0110\,1101\,0011} = 1001\,0010\,1100$$
+
+:::ergebnis
+NRZ-S: $1001\;0010\;1100$
+:::
+
+:::probe Rückwärts codieren
+NRZ-M aus b) wieder codieren, Startpegel high: Bit 0 → bleibt H; 1 → L; 1 → H; 0 → H; 1 → L; 1 → H; 0 → H; 1 → L; 0 → L; 0 → L; 1 → H; 1 → L. Ergibt H L H H L H H L L L H L – genau der gegebene Verlauf. ✓ (Mit Python für alle drei Varianten nachgeprüft.) Außerdem: Die Anzahl der Einsen in b) ($7$) ist gleich der Anzahl der Flanken im Bild ($7$ rote Punkte). ✓
+:::
+
+## Hilfreiches
+
+:::def NRZ-Varianten (VO)
+- **NRZ-L** codiert 1 mit „high“, 0 mit „low“.
+- **NRZ-M** bewirkt einen Pegelwechsel bei 1 (bei 0 bleibt der Pegel).
+- **NRZ-S** bewirkt einen Pegelwechsel bei 0 (bei 1 bleibt der Pegel).
+
+Die Wechsel finden jeweils an der Grenze **zu Beginn** eines Bitintervalls statt. Bei NRZ-M/S hängt die Bedeutung also nicht vom absoluten Pegel ab, sondern nur von der Änderung – der Code ist unempfindlich gegen vertauschte Leitungen (Polarität).
+:::
+
+:::merke Zusammenhang
+NRZ-S ist das Komplement von NRZ-M. Und: NRZ-M-Bit $i$ = (NRZ-L-Bit $i$) $\oplus$ (NRZ-L-Bit $i-1$), mit dem Pegel vor dem ersten Intervall als „Bit 0“.
+:::
+
+:::achtung Typische Fehler
+- Bei NRZ-M/S den **Pegel** statt des **Wechsels** ablesen.
+- Am Anfang einen Wechsel „erfinden“ – hier steht ausdrücklich, dass vor Intervall 1 derselbe Pegel anliegt, das erste Bit ist also bei NRZ-M $0$ und bei NRZ-S $1$.
+- Lange konstante Strecken (Intervalle 8–10) falsch abzählen: Die Hilfslinien zählen, nicht die Länge schätzen.
+- NRZ-M und NRZ-S verwechseln (M wie *Mark* = 1 bei Wechsel).
+:::
+
+Verwandte Beispiele: [U3.2](beispiel-U3-2.html), [U3.4](beispiel-U3-4.html).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>

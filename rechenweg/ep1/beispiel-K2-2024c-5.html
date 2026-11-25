@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP1 K2-2024c.5: main – short-Zuweisung mit Überlauf und Testaufrufe (Test 3) · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#b45309" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link active" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">EP1</a><span>›</span><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a><span>›</span><span>Bsp. K2-2024c.5</span></nav>
+<div class="printhead">Rechenweg · Einführung in die Programmierung 1 · K2-Einstufungstest – Beispieltests</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">EP1</span><span>Beispiel K2-2024c.5</span><span class="dot">·</span><span class="ex-topic">Programmaufbau (main, expliziter Cast, Zahlenliterale mit _)</span></div>
+<h1>main – short-Zuweisung mit Überlauf und Testaufrufe (Test 3)</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="beispiel-K2-2024c-4.html"  title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="#" aria-disabled="true" title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/EP1_Bsp_K2-2024c-5.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="ep1/K2-2024c.5" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">main – short-Zuweisung mit Überlauf und Testaufrufe (Test 3)</div><table>
+<tr><th>Kurs</th><td>Einführung in die Programmierung 1</td></tr><tr><th>Nummer</th><td>K2-2024c.5</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a></td></tr><tr><th>Thema</th><td>Programmaufbau (main, expliziter Cast, Zahlenliterale mit _)</td></tr>
+<tr><th>Navigation</th><td><a href="beispiel-K2-2024c-4.html">← K2-2024c.4</a> </td></tr>
+<tr><th>PDF</th><td><a href="pdf/EP1_Bsp_K2-2024c-5.pdf">EP1_Bsp_K2-2024c-5.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/ep1/k2-beispieltests.pdf#page=5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p><em>Einstufungstest K2, WS2024 (Beispieltest 3), <code>main</code> – (4 Punkte)</em></p>
+<p>Implementieren Sie folgende Punkte <strong>in</strong> <code>main</code>:</p>
+<ul>
+<li>Deklarieren Sie eine <code>short</code>-Variable <code>result</code> und eine String-Variable <code>test</code> mit dem Inhalt <code>&quot;all: hallo hall&quot;</code>.</li>
+<li><code>result</code> soll das Ergebnis des Aufrufs <code>sumUp(4, 9, 320_300)</code> ohne Compiler-Fehler zugewiesen werden.</li>
+</ul>
+<p>Testen Sie alle Methoden in <code>main</code> mit zumindest folgenden Aufrufen, und erzeugen Sie mit deren Hilfe die gezeigten Ausgaben. Außer <code>printPattern</code> darf keine der implementierten Methoden eine Ausgabe erzeugen. Alle anderen Ausgaben müssen in <code>main</code> erfolgen.</p>
+<p><em>(Aufrufe und Ausgaben: siehe Tabellen in <a href="beispiel-K2-2024c-1.html">K2-2024c.1</a> bis <a href="beispiel-K2-2024c-4.html">K2-2024c.4</a>.)</em></p>
+<p><em>Bewertung:</em> Deklarationen 1, korrekte Zuweisung (<code>result</code>) 1, korrekte Aufrufe 1, Ausgaben in der Konsole 1.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>Aufbau wie in den anderen K2-Tests. Zwei Details: <code>320_300</code> ist ein ganz normales <code>int</code>-Literal (Unterstriche zwischen Ziffern sind seit Java 7 erlaubt und dienen nur der Lesbarkeit). Und <code>sumUp</code> liefert ein <code>int</code>, das wir mit <code>(short)</code> in die <code>short</code>-Variable zwingen müssen – „ohne Compiler-Fehler“ heißt genau das. Interessant: Der Wert ist hier so groß, dass der Cast tatsächlich <strong>überläuft</strong>.</p>
+</div></div>
+<h3 id="loesungsvors-code-vollstaendige-klasse-1">Code (vollständige Klasse)</h3>
+<pre><code class="language-java">public class Aufgabe {
+
+    // sumUp, addMark, digitsToDistance, printPattern wie in K2-2024c.1 bis K2-2024c.4
+
+    public static void main(String[] args) {
+        short result;
+        String test = &quot;all: hallo hall&quot;;
+        result = (short) sumUp(4, 9, 320_300);
+
+        System.out.println(sumUp(2, 5, 11));
+        System.out.println(sumUp(8, 8, 40));
+        System.out.println(sumUp(5, 1, 2000));
+        System.out.println(addMark(test, &quot;allo&quot;, 6));
+        System.out.println(addMark(test, &quot;all&quot;, 3));
+        System.out.println(addMark(test, &quot;hall&quot;, 3));
+        System.out.println(addMark(test, &quot;@all&quot;, 3));
+        System.out.println(digitsToDistance(&quot;12oder34&quot;));
+        System.out.println(digitsToDistance(&quot;Ich bin 1 Berliner!11&quot;));
+        System.out.println(digitsToDistance(&quot;Heute ist der 4.März 2022&quot;));
+        System.out.println(digitsToDistance(&quot;Vier*mal*vier_=_0&quot;));
+        printPattern(6, 2);
+        printPattern(7, 3);
+        printPattern(1, 1);
+        printPattern(8, 5);
+    }
+}
+</code></pre>
+<h3 id="loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</h3>
+<ol>
+<li><strong>Deklarationen:</strong> <code>short result;</code> und <code>String test = &quot;all: hallo hall&quot;;</code>.</li>
+<li><strong>Zuweisung:</strong> <code>result = (short) sumUp(4, 9, 320_300);</code>. Ohne Cast: <em>incompatible types: possible lossy conversion from int to short</em>.</li>
+<li><strong>Wert:</strong> <code>sumUp(4, 9, 320_300)</code> ergibt <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80072</mn></mrow><annotation encoding="application/x-tex">80072</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80072</span></span></span></span> (mit Java und unabhängig mit Python nachgerechnet). Das passt <strong>nicht</strong> in ein <code>short</code> (max. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32767</mn></mrow><annotation encoding="application/x-tex">32767</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32767</span></span></span></span>). Der Cast behält die unteren 16 Bit: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80072</mn><mo>−</mo><mn>65536</mn><mo>=</mo><mn>14536</mn></mrow><annotation encoding="application/x-tex">80072 - 65536 = 14536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">80072</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65536</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">14536</span></span></span></span>, also <code>result = 14536</code>. Die Angabe verlangt nur die fehlerfreie Zuweisung, nicht die Ausgabe von <code>result</code> – der Überlauf ist aber eine gute Kontrollfrage.</li>
+<li><strong>Aufrufe:</strong> <code>sumUp</code>, <code>addMark</code>, <code>digitsToDistance</code> in <code>System.out.println</code>, <code>printPattern</code> (<code>void</code>) direkt.</li>
+</ol>
+<div class="box box-probe"><div class="box-title">Kompiliert und getestet (javac/java, JDK 21)</div><div class="box-body"><p>Ausgabe von <code>main</code> (18 Zeilen, identisch mit der Angabe):</p>
+<pre><code>3
+4
+0
+allo hall
+--all: hallo hall
+all: hallo hall--
+--
+00oder40
+Ich bin 8 Berliner!100
+Heute ist der 14.März 6000
+Vier*mal*vier_=_16
+??yyyy
+xx??yy
+xxxx??
+???yyyy
+xxx???y
+?
+?????yyy
+</code></pre>
+<p>Kontrolle der Zuweisung: <code>sumUp(4, 9, 320_300)</code> = <code>80072</code>, <code>result</code> = <code>(short) 80072</code> = <code>14536</code>.</p>
+</div></div>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p><code>short result; String test = &quot;all: hallo hall&quot;; result = (short) sumUp(4, 9, 320_300);</code> (Wert nach dem Cast: 14536) und alle Beispielaufrufe; <code>printPattern</code> direkt, alles andere in <code>System.out.println</code> (Code oben).</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-def"><div class="box-title">Überlauf beim Cast</div><div class="box-body"><p><code>(short) x</code> behält die unteren 16 Bit von <code>x</code> und interpretiert sie im Zweierkomplement. Für <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>80072</mn><mo>=</mo><mn>65536</mn><mo>+</mo><mn>14536</mn></mrow><annotation encoding="application/x-tex">x = 80072 = 65536 + 14536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80072</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">65536</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">14536</span></span></span></span> bleibt <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14536</mn></mrow><annotation encoding="application/x-tex">14536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">14536</span></span></span></span>; Werte über <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32767</mn></mrow><annotation encoding="application/x-tex">32767</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32767</span></span></span></span> können dabei auch negativ werden.</p>
+</div></div>
+<div class="box box-def"><div class="box-title">Unterstriche in Zahlenliteralen</div><div class="box-body"><p><code>320_300</code> ist dasselbe wie <code>320300</code>. Unterstriche dürfen nur <strong>zwischen</strong> Ziffern stehen (<code>_320300</code> oder <code>320300_</code> sind Fehler).</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li>Cast vergessen → Compilerfehler → 0 Punkte für den ganzen Test.</li>
+<li><code>result</code> als <code>int</code> deklarieren, um den Cast zu umgehen – verlangt ist ausdrücklich <code>short</code>.</li>
+<li><code>&quot;all: hallo hall&quot;</code> falsch abtippen (Leerzeichen, Doppelpunkt) – dann stimmen die <code>addMark</code>-Ausgaben nicht.</li>
+<li>Umlaut in <code>&quot;4.März&quot;</code>: Quelldatei als UTF-8 speichern, sonst erscheint <code>MÃ¤rz</code> oder <code>M?rz</code>.</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-K2-2024c-1.html">K2-2024c.1</a> (sumUp), <a href="beispiel-K2-2024-5.html">K2-2024.5</a> (main, Test 1), <a href="beispiel-K2-2024b-5.html">K2-2024b.5</a> (main, Test 2).</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="ep1/K2-2024c.5" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><a class="pager prev" href="beispiel-K2-2024c-4.html"><span class="pager-dir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Vorheriges</span><span class="pager-title"><b>Bsp. K2-2024c.4</b> printPattern – wanderndes ?-Muster mit x und y</span></a><span class="pager next disabled"></span></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-code-vollstaendige-klasse-1">Code (vollständige Klasse)</a></li><li><a href="#loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">K2-Einstufungstest – Beispieltests</div><div class="minimap" data-minimap="ep1" data-kap="0" data-current="K2-2024c.5"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Einführung in die Programmierung 1" data-nr="K2-2024c.5">
+## Angabe
+
+*Einstufungstest K2, WS2024 (Beispieltest 3), `main` – (4 Punkte)*
+
+Implementieren Sie folgende Punkte **in** `main`:
+
+- Deklarieren Sie eine `short`-Variable `result` und eine String-Variable `test` mit dem Inhalt `"all: hallo hall"`.
+- `result` soll das Ergebnis des Aufrufs `sumUp(4, 9, 320_300)` ohne Compiler-Fehler zugewiesen werden.
+
+Testen Sie alle Methoden in `main` mit zumindest folgenden Aufrufen, und erzeugen Sie mit deren Hilfe die gezeigten Ausgaben. Außer `printPattern` darf keine der implementierten Methoden eine Ausgabe erzeugen. Alle anderen Ausgaben müssen in `main` erfolgen.
+
+*(Aufrufe und Ausgaben: siehe Tabellen in [K2-2024c.1](beispiel-K2-2024c-1.html) bis [K2-2024c.4](beispiel-K2-2024c-4.html).)*
+
+*Bewertung:* Deklarationen 1, korrekte Zuweisung (`result`) 1, korrekte Aufrufe 1, Ausgaben in der Konsole 1.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+Aufbau wie in den anderen K2-Tests. Zwei Details: `320_300` ist ein ganz normales `int`-Literal (Unterstriche zwischen Ziffern sind seit Java 7 erlaubt und dienen nur der Lesbarkeit). Und `sumUp` liefert ein `int`, das wir mit `(short)` in die `short`-Variable zwingen müssen – „ohne Compiler-Fehler“ heißt genau das. Interessant: Der Wert ist hier so groß, dass der Cast tatsächlich **überläuft**.
+:::
+
+### Code (vollständige Klasse)
+
+```java
+public class Aufgabe {
+
+    // sumUp, addMark, digitsToDistance, printPattern wie in K2-2024c.1 bis K2-2024c.4
+
+    public static void main(String[] args) {
+        short result;
+        String test = "all: hallo hall";
+        result = (short) sumUp(4, 9, 320_300);
+
+        System.out.println(sumUp(2, 5, 11));
+        System.out.println(sumUp(8, 8, 40));
+        System.out.println(sumUp(5, 1, 2000));
+        System.out.println(addMark(test, "allo", 6));
+        System.out.println(addMark(test, "all", 3));
+        System.out.println(addMark(test, "hall", 3));
+        System.out.println(addMark(test, "@all", 3));
+        System.out.println(digitsToDistance("12oder34"));
+        System.out.println(digitsToDistance("Ich bin 1 Berliner!11"));
+        System.out.println(digitsToDistance("Heute ist der 4.März 2022"));
+        System.out.println(digitsToDistance("Vier*mal*vier_=_0"));
+        printPattern(6, 2);
+        printPattern(7, 3);
+        printPattern(1, 1);
+        printPattern(8, 5);
+    }
+}
+```
+
+### Schritt für Schritt
+
+1. **Deklarationen:** `short result;` und `String test = "all: hallo hall";`.
+2. **Zuweisung:** `result = (short) sumUp(4, 9, 320_300);`. Ohne Cast: *incompatible types: possible lossy conversion from int to short*.
+3. **Wert:** `sumUp(4, 9, 320_300)` ergibt $80072$ (mit Java und unabhängig mit Python nachgerechnet). Das passt **nicht** in ein `short` (max. $32767$). Der Cast behält die unteren 16 Bit: $80072 - 65536 = 14536$, also `result = 14536`. Die Angabe verlangt nur die fehlerfreie Zuweisung, nicht die Ausgabe von `result` – der Überlauf ist aber eine gute Kontrollfrage.
+4. **Aufrufe:** `sumUp`, `addMark`, `digitsToDistance` in `System.out.println`, `printPattern` (`void`) direkt.
+
+:::probe Kompiliert und getestet (javac/java, JDK 21)
+Ausgabe von `main` (18 Zeilen, identisch mit der Angabe):
+
+```
+3
+4
+0
+allo hall
+--all: hallo hall
+all: hallo hall--
+--
+00oder40
+Ich bin 8 Berliner!100
+Heute ist der 14.März 6000
+Vier*mal*vier_=_16
+??yyyy
+xx??yy
+xxxx??
+???yyyy
+xxx???y
+?
+?????yyy
+```
+
+Kontrolle der Zuweisung: `sumUp(4, 9, 320_300)` = `80072`, `result` = `(short) 80072` = `14536`.
+:::
+
+:::ergebnis
+`short result; String test = "all: hallo hall"; result = (short) sumUp(4, 9, 320_300);` (Wert nach dem Cast: 14536) und alle Beispielaufrufe; `printPattern` direkt, alles andere in `System.out.println` (Code oben).
+:::
+
+## Hilfreiches
+
+:::def Überlauf beim Cast
+`(short) x` behält die unteren 16 Bit von `x` und interpretiert sie im Zweierkomplement. Für $x = 80072 = 65536 + 14536$ bleibt $14536$; Werte über $32767$ können dabei auch negativ werden.
+:::
+
+:::def Unterstriche in Zahlenliteralen
+`320_300` ist dasselbe wie `320300`. Unterstriche dürfen nur **zwischen** Ziffern stehen (`_320300` oder `320300_` sind Fehler).
+:::
+
+:::achtung Typische Fehler
+- Cast vergessen → Compilerfehler → 0 Punkte für den ganzen Test.
+- `result` als `int` deklarieren, um den Cast zu umgehen – verlangt ist ausdrücklich `short`.
+- `"all: hallo hall"` falsch abtippen (Leerzeichen, Doppelpunkt) – dann stimmen die `addMark`-Ausgaben nicht.
+- Umlaut in `"4.März"`: Quelldatei als UTF-8 speichern, sonst erscheint `MÃ¤rz` oder `M?rz`.
+:::
+
+Verwandte Beispiele: [K2-2024c.1](beispiel-K2-2024c-1.html) (sumUp), [K2-2024.5](beispiel-K2-2024-5.html) (main, Test 1), [K2-2024b.5](beispiel-K2-2024b-5.html) (main, Test 2).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>

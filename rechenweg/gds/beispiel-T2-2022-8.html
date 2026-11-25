@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDS T2-2022.8: Test 2 2022W, Aufgabe 8: Regulärer Ausdruck für Kleinfahrzeugkennzeichen · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#c2410c" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link active" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">GDS</a><span>›</span><a href="index.html#kap-10">Test 2 – alte Testangaben</a><span>›</span><span>Bsp. T2-2022.8</span></nav>
+<div class="printhead">Rechenweg · Grundzüge digitaler Systeme · Test 2 – alte Testangaben</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">GDS</span><span>Beispiel T2-2022.8</span><span class="dot">·</span><span class="ex-topic">Formale Sprachen (reguläre Ausdrücke, POSIX, Endlichkeit)</span></div>
+<h1>Test 2 2022W, Aufgabe 8: Regulärer Ausdruck für Kleinfahrzeugkennzeichen</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="beispiel-T2-2022-7.html"  title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="beispiel-T2-2022-9.html"  title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/GDS_Bsp_T2-2022-8.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="gds/T2-2022.8" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">Test 2 2022W, Aufgabe 8: Regulärer Ausdruck für Kleinfahrzeugkennzeichen</div><table>
+<tr><th>Kurs</th><td>Grundzüge digitaler Systeme</td></tr><tr><th>Nummer</th><td>T2-2022.8</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-10">Test 2 – alte Testangaben</a></td></tr><tr><th>Thema</th><td>Formale Sprachen (reguläre Ausdrücke, POSIX, Endlichkeit)</td></tr>
+<tr><th>Navigation</th><td><a href="beispiel-T2-2022-7.html">← T2-2022.7</a> <a href="beispiel-T2-2022-9.html">T2-2022.9 →</a></td></tr>
+<tr><th>PDF</th><td><a href="pdf/GDS_Bsp_T2-2022-8.pdf">GDS_Bsp_T2-2022-8.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/gds/alttests/2022W_Test2_A.pdf#page=10" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p><strong>Aufgabe 8</strong> <em>(10 Punkte)</em></p>
+<p>In Österreich gibt es sogenannte Kleinfahrzeugkennzeichen, die für bestimmte Arten von Booten ausgegeben werden. Diese Kennzeichen werden nach folgendem Schema vergeben: Das Kennzeichen besteht aus einem Großbuchstaben oder einem Groß- und einem Kleinbuchstaben (zur Bezeichnung der Zulassungsbehörde), gefolgt von einem Bindestrich und einer beliebig langen Zahl in arabischen Ziffern (mindestens eine Ziffer lang). Beispiele für gültige Kennzeichen sind W-10766 und K-89020.</p>
+<p>(a) <em>(4 Punkte)</em> Entscheiden Sie sich für eine der in der Vorlesung vorgestellten Schreibweisen (algebraisch, EBNF-Notation, POSIX, etc.) und geben Sie einen regulären Ausdruck an, der solche Kennzeichen beschreibt.</p>
+<p>(b) <em>(4 Punkte)</em> Eine genauere Recherche ergibt, dass die Zahl im Kennzeichen fünfstellig sein muss. Geben Sie einen adaptierten regulären Ausdruck an, der auch diese Einschränkung berücksichtigt.</p>
+<p>(c) <em>(2 Punkte)</em> Enthält die Sprache zu dem Ausdruck aus Teilaufgabe (a) endlich viele Wörter? Begründen Sie ihre Antwort.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>Wir zerlegen ein Kennzeichen in seine drei Bausteine – Behördenkürzel, Bindestrich, Zahl – und übersetzen jeden Baustein einzeln in die POSIX-Notation (Extended Regular Expressions). Dann hängen wir die Bausteine hintereinander. Für (b) ersetzen wir „mindestens eine Ziffer“ durch „genau fünf Ziffern“; für (c) fragen wir, ob es eine Längenschranke gibt.</p>
+</div></div>
+<h3 id="loesungsvors-a-allgemeines-kennzeichen-1">(a) Allgemeines Kennzeichen</h3>
+<p>Die Bausteine in POSIX ERE:</p>
+<table>
+<thead>
+<tr>
+<th>Baustein</th>
+<th>Bedeutung</th>
+<th>POSIX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Großbuchstabe</td>
+<td>genau einer aus A–Z</td>
+<td><code>[A-Z]</code></td>
+</tr>
+<tr>
+<td>optionaler Kleinbuchstabe</td>
+<td>null- oder einmal a–z</td>
+<td><code>[a-z]?</code></td>
+</tr>
+<tr>
+<td>Bindestrich</td>
+<td>das Zeichen <code>-</code> (außerhalb von <code>[…]</code> ohne Sonderbedeutung)</td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td>Zahl</td>
+<td>eine oder mehr Ziffern</td>
+<td><code>[0-9]+</code></td>
+</tr>
+</tbody></table>
+<p>Hintereinander geschrieben:</p>
+<pre><code>[A-Z][a-z]?-[0-9]+
+</code></pre>
+<p>Der Ausdruck wird – wie in der VO für Sprachen üblich – auf das <strong>ganze</strong> Wort bezogen (bei einem Suchwerkzeug schreibt man dazu <code>^…$</code>).</p>
+<p>Gleichwertig in algebraischer Notation (mit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi mathvariant="normal">A</mi><mo>+</mo><mi mathvariant="normal">B</mi><mo>+</mo><mo>⋯</mo><mo>+</mo><mi mathvariant="normal">Z</mi></mrow><annotation encoding="application/x-tex">G = \mathrm A + \mathrm B + \dots + \mathrm Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathrm">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathrm">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">Z</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi mathvariant="normal">a</mi><mo>+</mo><mo>⋯</mo><mo>+</mo><mi mathvariant="normal">z</mi></mrow><annotation encoding="application/x-tex">K = \mathrm a + \dots + \mathrm z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathrm">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathrm">z</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mn>0</mn><mo>+</mo><mn>1</mn><mo>+</mo><mo>⋯</mo><mo>+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">Z = 0 + 1 + \dots + 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span></span></span></span>):
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mtext> </mtext><mo stretchy="false">(</mo><mi>K</mi><mo>+</mo><mi>ε</mi><mo stretchy="false">)</mo><mtext> </mtext><mtext mathvariant="monospace">-</mtext><mtext> </mtext><mi>Z</mi><mtext> </mtext><msup><mi>Z</mi><mo>∗</mo></msup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">G\,(K + \varepsilon)\,\texttt{-}\,Z\,Z^* .</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ε</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord texttt">-</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span></span></p>
+<h3 id="loesungsvors-b-genau-fuenfstellige-zahl-2">(b) Genau fünfstellige Zahl</h3>
+<p>Statt <code>+</code> (eins oder mehr) verlangen wir mit dem Wiederholungsoperator <code>{5}</code> genau fünf Ziffern:</p>
+<pre><code>[A-Z][a-z]?-[0-9]{5}
+</code></pre>
+<p>(Ohne Wiederholungsoperator: <code>[A-Z][a-z]?-[0-9][0-9][0-9][0-9][0-9]</code>.)</p>
+<div class="box box-probe"><div class="box-title">Kontrolle mit Python (re.fullmatch)</div><div class="box-body"><table>
+<thead>
+<tr>
+<th>Wort</th>
+<th align="center">(a)</th>
+<th align="center">(b)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>W-10766</code></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td><code>K-89020</code></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td><code>Wb-1</code></td>
+<td align="center">✓</td>
+<td align="center">✗ (nur eine Ziffer)</td>
+</tr>
+<tr>
+<td><code>W-1234</code></td>
+<td align="center">✓</td>
+<td align="center">✗ (vier Ziffern)</td>
+</tr>
+<tr>
+<td><code>w-1</code></td>
+<td align="center">✗ (Kleinbuchstabe vorne)</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td><code>WB-12</code></td>
+<td align="center">✗ (zweiter Buchstabe groß)</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td><code>W-</code></td>
+<td align="center">✗ (keine Ziffer)</td>
+<td align="center">✗</td>
+</tr>
+</tbody></table>
+</div></div>
+<h3 id="loesungsvors-c-endlich-viele-woerter-3">(c) Endlich viele Wörter?</h3>
+<p><strong>Nein, die Sprache aus (a) ist unendlich.</strong> Der Teil <code>[0-9]+</code> erlaubt beliebig viele Ziffern: Für jedes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \ge 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> ist zum Beispiel
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext mathvariant="monospace">W-</mtext><munder><munder><mrow><mn>1</mn><mo>⋯</mo><mn>1</mn></mrow><mo stretchy="true">⏟</mo></munder><mi>n</mi></munder></mrow><annotation encoding="application/x-tex">\texttt{W-}\underbrace{1\cdots1}_{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7938em;vertical-align:-1.1494em;"></span><span class="mord text"><span class="mord texttt">W-</span></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-1.8506em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span class="svg-align" style="top:-2.352em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"/></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"/></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.648em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1494em;"><span></span></span></span></span></span></span></span></span></span>
+ein Wort der Sprache, und diese Wörter sind für verschiedene <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> verschieden (verschieden lang). Also gibt es keine größte Wortlänge und damit unendlich viele Wörter. (Ursache ist der Operator <code>+</code> bzw. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span>; ein regulärer Ausdruck ohne Stern/Plus beschreibt immer eine endliche Sprache.)</p>
+<p>Zum Vergleich: Die Sprache aus (b) ist endlich, nämlich <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn><mo>⋅</mo><mn>27</mn><mo>⋅</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup><mo>=</mo><mn>70</mn><mtext> </mtext><mn>200</mn><mtext> </mtext><mn>000</mn></mrow><annotation encoding="application/x-tex">26 \cdot 27 \cdot 10^5 = 70\,200\,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">26</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">27</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">70</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">200</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span> Wörter (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn></mrow><annotation encoding="application/x-tex">26</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">26</span></span></span></span> Großbuchstaben, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">26 + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">26</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> Möglichkeiten für den optionalen Kleinbuchstaben, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> Zahlen).</p>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>(a) <code>[A-Z][a-z]?-[0-9]+</code></p>
+<p>(b) <code>[A-Z][a-z]?-[0-9]{5}</code></p>
+<p>(c) Unendlich viele Wörter, weil <code>[0-9]+</code> beliebig lange Ziffernfolgen zulässt (z. B. <code>W-1</code>, <code>W-11</code>, <code>W-111</code>, …).</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-def"><div class="box-title">POSIX Extended Regular Expressions (Auszug)</div><div class="box-body"><p><code>[…]</code> ein Zeichen aus der Menge (Bereiche wie <code>A-Z</code>), <code>?</code> null- oder einmal, <code>*</code> beliebig oft, <code>+</code> mindestens einmal, <code>{n}</code> genau <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-mal, <code>{m,n}</code> zwischen <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>- und <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-mal, <code>|</code> Alternative, <code>(…)</code> Gruppierung, <code>\.</code> ein echter Punkt.</p>
+</div></div>
+<div class="box box-merke"><div class="box-title">Merke</div><div class="box-body"><p>Eine Sprache ist genau dann unendlich, wenn sie Wörter beliebiger Länge enthält. Bei regulären Ausdrücken entstehen solche Wörter nur durch <code>*</code>/<code>+</code> über einem nichtleeren Teilausdruck.</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li><code>[A-Z][a-z]*</code> statt <code>[a-z]?</code> – erlaubt beliebig viele Kleinbuchstaben.</li>
+<li><code>[0-9]*</code> statt <code>[0-9]+</code> – erlaubt ein Kennzeichen ohne Zahl.</li>
+<li>In (b) <code>[0-9]{1,5}</code> schreiben – das wäre „höchstens fünfstellig“.</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-T2-2022-9.html">T2-2022.9</a> (Sprachoperationen, Regex und Automat).</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="gds/T2-2022.8" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><a class="pager prev" href="beispiel-T2-2022-7.html"><span class="pager-dir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Vorheriges</span><span class="pager-title"><b>Bsp. T2-2022.7</b> Test 2 2022W, Aufgabe 7: Wer war im Wohnzimmer? (Modellierung)</span></a><a class="pager next" href="beispiel-T2-2022-9.html"><span class="pager-dir">Nächstes <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><span class="pager-title"><b>Bsp. T2-2022.9</b> Test 2 2022W, Aufgabe 9: Sprachoperationen, NEA zur Regex, DEA mod 4</span></a></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-a-allgemeines-kennzeichen-1">(a) Allgemeines Kennzeichen</a></li><li><a href="#loesungsvors-b-genau-fuenfstellige-zahl-2">(b) Genau fünfstellige Zahl</a></li><li><a href="#loesungsvors-c-endlich-viele-woerter-3">(c) Endlich viele Wörter?</a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">Test 2 – alte Testangaben</div><div class="minimap" data-minimap="gds" data-kap="9" data-current="T2-2022.8"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Grundzüge digitaler Systeme" data-nr="T2-2022.8">
+## Angabe
+
+**Aufgabe 8** *(10 Punkte)*
+
+In Österreich gibt es sogenannte Kleinfahrzeugkennzeichen, die für bestimmte Arten von Booten ausgegeben werden. Diese Kennzeichen werden nach folgendem Schema vergeben: Das Kennzeichen besteht aus einem Großbuchstaben oder einem Groß- und einem Kleinbuchstaben (zur Bezeichnung der Zulassungsbehörde), gefolgt von einem Bindestrich und einer beliebig langen Zahl in arabischen Ziffern (mindestens eine Ziffer lang). Beispiele für gültige Kennzeichen sind W-10766 und K-89020.
+
+(a) *(4 Punkte)* Entscheiden Sie sich für eine der in der Vorlesung vorgestellten Schreibweisen (algebraisch, EBNF-Notation, POSIX, etc.) und geben Sie einen regulären Ausdruck an, der solche Kennzeichen beschreibt.
+
+(b) *(4 Punkte)* Eine genauere Recherche ergibt, dass die Zahl im Kennzeichen fünfstellig sein muss. Geben Sie einen adaptierten regulären Ausdruck an, der auch diese Einschränkung berücksichtigt.
+
+(c) *(2 Punkte)* Enthält die Sprache zu dem Ausdruck aus Teilaufgabe (a) endlich viele Wörter? Begründen Sie ihre Antwort.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+Wir zerlegen ein Kennzeichen in seine drei Bausteine – Behördenkürzel, Bindestrich, Zahl – und übersetzen jeden Baustein einzeln in die POSIX-Notation (Extended Regular Expressions). Dann hängen wir die Bausteine hintereinander. Für (b) ersetzen wir „mindestens eine Ziffer“ durch „genau fünf Ziffern“; für (c) fragen wir, ob es eine Längenschranke gibt.
+:::
+
+### (a) Allgemeines Kennzeichen
+
+Die Bausteine in POSIX ERE:
+
+| Baustein | Bedeutung | POSIX |
+|---|---|---|
+| Großbuchstabe | genau einer aus A–Z | `[A-Z]` |
+| optionaler Kleinbuchstabe | null- oder einmal a–z | `[a-z]?` |
+| Bindestrich | das Zeichen `-` (außerhalb von `[…]` ohne Sonderbedeutung) | `-` |
+| Zahl | eine oder mehr Ziffern | `[0-9]+` |
+
+Hintereinander geschrieben:
+
+```
+[A-Z][a-z]?-[0-9]+
+```
+
+Der Ausdruck wird – wie in der VO für Sprachen üblich – auf das **ganze** Wort bezogen (bei einem Suchwerkzeug schreibt man dazu `^…$`).
+
+Gleichwertig in algebraischer Notation (mit $G = \mathrm A + \mathrm B + \dots + \mathrm Z$, $K = \mathrm a + \dots + \mathrm z$, $Z = 0 + 1 + \dots + 9$):
+$$G\,(K + \varepsilon)\,\texttt{-}\,Z\,Z^* .$$
+
+### (b) Genau fünfstellige Zahl
+
+Statt `+` (eins oder mehr) verlangen wir mit dem Wiederholungsoperator `{5}` genau fünf Ziffern:
+
+```
+[A-Z][a-z]?-[0-9]{5}
+```
+
+(Ohne Wiederholungsoperator: `[A-Z][a-z]?-[0-9][0-9][0-9][0-9][0-9]`.)
+
+:::probe Kontrolle mit Python (re.fullmatch)
+| Wort | (a) | (b) |
+|---|:-:|:-:|
+| `W-10766` | ✓ | ✓ |
+| `K-89020` | ✓ | ✓ |
+| `Wb-1` | ✓ | ✗ (nur eine Ziffer) |
+| `W-1234` | ✓ | ✗ (vier Ziffern) |
+| `w-1` | ✗ (Kleinbuchstabe vorne) | ✗ |
+| `WB-12` | ✗ (zweiter Buchstabe groß) | ✗ |
+| `W-` | ✗ (keine Ziffer) | ✗ |
+:::
+
+### (c) Endlich viele Wörter?
+
+**Nein, die Sprache aus (a) ist unendlich.** Der Teil `[0-9]+` erlaubt beliebig viele Ziffern: Für jedes $n \ge 1$ ist zum Beispiel
+$$\texttt{W-}\underbrace{1\cdots1}_{n}$$
+ein Wort der Sprache, und diese Wörter sind für verschiedene $n$ verschieden (verschieden lang). Also gibt es keine größte Wortlänge und damit unendlich viele Wörter. (Ursache ist der Operator `+` bzw. $^*$; ein regulärer Ausdruck ohne Stern/Plus beschreibt immer eine endliche Sprache.)
+
+Zum Vergleich: Die Sprache aus (b) ist endlich, nämlich $26 \cdot 27 \cdot 10^5 = 70\,200\,000$ Wörter ($26$ Großbuchstaben, $26 + 1$ Möglichkeiten für den optionalen Kleinbuchstaben, $10^5$ Zahlen).
+
+:::ergebnis
+(a) `[A-Z][a-z]?-[0-9]+`
+
+(b) `[A-Z][a-z]?-[0-9]{5}`
+
+(c) Unendlich viele Wörter, weil `[0-9]+` beliebig lange Ziffernfolgen zulässt (z. B. `W-1`, `W-11`, `W-111`, …).
+:::
+
+## Hilfreiches
+
+:::def POSIX Extended Regular Expressions (Auszug)
+`[…]` ein Zeichen aus der Menge (Bereiche wie `A-Z`), `?` null- oder einmal, `*` beliebig oft, `+` mindestens einmal, `{n}` genau $n$-mal, `{m,n}` zwischen $m$- und $n$-mal, `|` Alternative, `(…)` Gruppierung, `\.` ein echter Punkt.
+:::
+
+:::merke
+Eine Sprache ist genau dann unendlich, wenn sie Wörter beliebiger Länge enthält. Bei regulären Ausdrücken entstehen solche Wörter nur durch `*`/`+` über einem nichtleeren Teilausdruck.
+:::
+
+:::achtung Typische Fehler
+- `[A-Z][a-z]*` statt `[a-z]?` – erlaubt beliebig viele Kleinbuchstaben.
+- `[0-9]*` statt `[0-9]+` – erlaubt ein Kennzeichen ohne Zahl.
+- In (b) `[0-9]{1,5}` schreiben – das wäre „höchstens fünfstellig“.
+:::
+
+Verwandte Beispiele: [T2-2022.9](beispiel-T2-2022-9.html) (Sprachoperationen, Regex und Automat).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>

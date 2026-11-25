@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karteikarten · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body class="page-cards" style="--accent:#334155" data-up="" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link" href="gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link" href="ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="karten.html">Karteikarten</a><a class="topnav-link" href="pruefung.html">Prüfung</a><a class="topnav-link" href="termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap tool-page">
+<h1>Karteikarten</h1>
+<p class="lead">Alle Sätze und Definitionen aus den „Hilfreiches“-Abschnitten, ohne Doppelte. Umdrehen mit Leertaste, bewerten mit ← (nochmal) und → (gewusst). Die Leitner-Fächer bleiben in diesem Browser gespeichert.</p>
+<div class="card-controls"><select id="card-course"><option value="">Alle Kurse</option><option value="adm">Algebra und Diskrete Mathematik</option><option value="analysis">Analysis</option><option value="gds">Grundzüge digitaler Systeme</option><option value="ep1">Einführung in die Programmierung 1</option><option value="ori">Orientierung Informatik und Wirtschaftsinformatik</option></select><select id="card-chapter"><option value="">Alle Kapitel</option></select><select id="card-type"><option value="">Sätze & Definitionen</option><option value="satz">Sätze</option><option value="def">Definitionen</option></select><span class="card-stats" id="card-stats"></span></div>
+<div class="flashcard" id="flashcard" tabindex="0"><div class="fc-front" id="fc-front"></div><div class="fc-back" id="fc-back" hidden></div></div>
+<div class="card-actions"><button class="btn" type="button" id="fc-again">← Nochmal</button><button class="btn primary" type="button" id="fc-flip">Umdrehen <kbd>␣</kbd></button><button class="btn" type="button" id="fc-good">Gewusst →</button></div>
+<p class="card-src" id="fc-src"></p>
+</div></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="assets/index.js"></script><script src="assets/cards.js"></script><script src="assets/app.js"></script>
+</body></html>

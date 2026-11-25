@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP1 K2-2024c.1: sumUp – Reste aufaddieren und Nullreste zählen · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#b45309" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link active" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">EP1</a><span>›</span><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a><span>›</span><span>Bsp. K2-2024c.1</span></nav>
+<div class="printhead">Rechenweg · Einführung in die Programmierung 1 · K2-Einstufungstest – Beispieltests</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">EP1</span><span>Beispiel K2-2024c.1</span><span class="dot">·</span><span class="ex-topic">Schleifen (while, Modulo, Zähler)</span></div>
+<h1>sumUp – Reste aufaddieren und Nullreste zählen</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="beispiel-K2-2024b-5.html"  title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="beispiel-K2-2024c-2.html"  title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/EP1_Bsp_K2-2024c-1.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="ep1/K2-2024c.1" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">sumUp – Reste aufaddieren und Nullreste zählen</div><table>
+<tr><th>Kurs</th><td>Einführung in die Programmierung 1</td></tr><tr><th>Nummer</th><td>K2-2024c.1</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a></td></tr><tr><th>Thema</th><td>Schleifen (while, Modulo, Zähler)</td></tr>
+<tr><th>Navigation</th><td><a href="beispiel-K2-2024b-5.html">← K2-2024b.5</a> <a href="beispiel-K2-2024c-2.html">K2-2024c.2 →</a></td></tr>
+<tr><th>PDF</th><td><a href="pdf/EP1_Bsp_K2-2024c-1.pdf">EP1_Bsp_K2-2024c-1.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/ep1/k2-beispieltests.pdf#page=5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p><em>Einstufungstest K2, WS2024 (Beispieltest 3), Methode 1 von 4 – (5 Punkte)</em></p>
+<p><strong>Einschränkungen</strong></p>
+<ul>
+<li>Sie dürfen <strong>keine</strong> zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.</li>
+<li>Die vorgegebenen Methodenköpfe dürfen <strong>nicht</strong> erweitert oder geändert werden.</li>
+<li>Sie dürfen Strings <strong>nicht</strong> per Referenz vergleichen.</li>
+<li>Sie dürfen <strong>nicht</strong> die Klassen <code>StringBuffer</code> bzw. <code>StringBuilder</code> verwenden.</li>
+<li>Sie dürfen <strong>keine</strong> Lambdas, Streams oder Methodenreferenzen verwenden.</li>
+<li>Sie dürfen <strong>nur</strong> folgende Methode(n) aus der Klasse <code>String</code> verwenden: <code>charAt</code>, <code>equals</code>, <code>length</code>, <code>substring</code>.</li>
+<li>Sie dürfen <strong>nur</strong> folgende Methode(n) aus der Klasse <code>Character</code> verwenden: <code>isDigit</code>.</li>
+<li>Aus der Klasse <code>Math</code> dürfen alle Methoden verwendet werden. Sonst darf <strong>keine</strong> weitere Klasse verwendet werden.</li>
+</ul>
+<p><strong>Aufgabenstellung</strong></p>
+<p><code>int sumUp(int d, int s, int t)</code> erhöht <code>s</code>, bis <code>s</code> nicht mehr kleiner als <code>t</code> ist. Dazu wird wiederholt der Rest der Division <code>s/d</code> zu <code>s</code> addiert. Ist der Rest <code>0</code>, dann wird statt dessen <code>1</code> addiert. Gibt zurück, wie oft der Rest der Division <code>0</code> war.
+<em>Annahme(n):</em> <code>0 &lt; d</code>, <code>0 &lt; s &lt; t</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Aufruf</th>
+<th>Ausgabe in main auf der Konsole</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sumUp(2, 5, 11)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>sumUp(8, 8, 40)</code></td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>sumUp(5, 1, 2000)</code></td>
+<td><code>0</code></td>
+</tr>
+</tbody></table>
+<p><em>Bewertung:</em> korrekte Schleife(n) 1, korrekter Test 1, korrekte Berechnung und Rückgabe 3.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>Wie oft die Schleife läuft, steht nicht vorher fest – sie läuft, <strong>solange</strong> <code>s &lt; t</code> gilt. Das ist der typische Fall für eine <code>while</code>-Schleife. In jedem Durchlauf berechnen wir <code>rest = s % d</code>; ist er 0, addieren wir 1 und zählen mit, sonst addieren wir den Rest. Die Schleife endet sicher, weil <code>s</code> in jedem Durchlauf um mindestens 1 wächst.</p>
+</div></div>
+<h3 id="loesungsvors-code-1">Code</h3>
+<pre><code class="language-java">public static int sumUp(int d, int s, int t) {
+    int zeros = 0;
+    while (s &lt; t) {
+        int rest = s % d;
+        if (rest == 0) {
+            s += 1;
+            zeros++;
+        } else {
+            s += rest;
+        }
+    }
+    return zeros;
+}
+</code></pre>
+<h3 id="loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</h3>
+<ol>
+<li><strong>Zähler</strong> <code>zeros = 0</code> für die Nullreste.</li>
+<li><strong>Schleifenbedingung</strong> <code>s &lt; t</code> – „erhöhen, <strong>bis</strong> <code>s</code> nicht mehr kleiner als <code>t</code> ist“ heißt: weitermachen, solange <code>s &lt; t</code>.</li>
+<li><strong>Rest berechnen</strong> mit <code>s % d</code> (Annahme <code>d &gt; 0</code>, also keine Division durch 0).</li>
+<li><strong>Fallunterscheidung:</strong> Rest 0 → <code>s += 1</code> und <code>zeros++</code>; sonst <code>s += rest</code>. Der Parameter <code>s</code> darf verändert werden – er ist eine lokale Kopie, der Aufrufer merkt davon nichts.</li>
+<li><strong>Rückgabe</strong> der Anzahl Nullreste.</li>
+</ol>
+<h3 id="loesungsvors-trace-fuer-sumup-2-5-11-3">Trace für <code>sumUp(2, 5, 11)</code></h3>
+<table>
+<thead>
+<tr>
+<th><code>s</code> vorher</th>
+<th><code>s % 2</code></th>
+<th>Aktion</th>
+<th><code>s</code> nachher</th>
+<th><code>zeros</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>1</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span> (Rest)</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>, zählen</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span></td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>, zählen</td>
+<td>9</td>
+<td>2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span></td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>, zählen</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td>11</td>
+<td>–</td>
+<td><code>11 &lt; 11</code> falsch → Ende</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Rückgabe <strong>3</strong> ✓.</p>
+<p><strong><code>sumUp(8, 8, 40)</code>:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>→</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">8 \to 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span></span></span></span> (Rest 0, zeros 1) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mn>10</mn><mo>→</mo><mn>12</mn><mo>→</mo><mn>16</mn><mo>→</mo><mn>17</mn></mrow><annotation encoding="application/x-tex">\to 10 \to 12 \to 16 \to 17</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">17</span></span></span></span> (Rest 0, zeros 2) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mn>18</mn><mo>→</mo><mn>20</mn><mo>→</mo><mn>24</mn><mo>→</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">\to 18 \to 20 \to 24 \to 25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">24</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span></span></span></span> (zeros 3) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mn>26</mn><mo>→</mo><mn>28</mn><mo>→</mo><mn>32</mn><mo>→</mo><mn>33</mn></mrow><annotation encoding="application/x-tex">\to 26 \to 28 \to 32 \to 33</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">26</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">28</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">33</span></span></span></span> (zeros 4) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mn>34</mn><mo>→</mo><mn>36</mn><mo>→</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">\to 34 \to 36 \to 40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">34</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">36</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40</span></span></span></span> → Ende, <strong>4</strong> ✓.</p>
+<div class="box box-hinweis"><div class="box-title">Warum liefert sumUp(5, 1, 2000) genau 0?</div><div class="box-body"><p>Addiert man zu <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> seinen Rest <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>s</mi><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>d</mi></mrow><annotation encoding="application/x-tex">r = s \bmod d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>, so gilt <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>+</mo><mi>r</mi><mo>≡</mo><mn>2</mn><mi>s</mi><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s + r \equiv 2s \pmod d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4637em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">s</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>. Der Rest verdoppelt sich also in jedem Schritt modulo 5: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mn>2</mn><mo>→</mo><mn>4</mn><mo>→</mo><mn>3</mn><mo>→</mo><mn>1</mn><mo>→</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">1 \to 2 \to 4 \to 3 \to 1 \to \dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.123em;"></span><span class="minner">…</span></span></span></span> Da <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>s</mi><mo>≡</mo><mn>0</mn><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2s \equiv 0 \pmod 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord">5</span><span class="mclose">)</span></span></span></span> nur für <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≡</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s \equiv 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4637em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> gilt, wird der Rest <strong>nie</strong> 0, wenn er nicht schon 0 war. Bei Start <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> ist das Ergebnis daher 0 – die Schleife läuft trotzdem, bis <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>2000</mn></mrow><annotation encoding="application/x-tex">s \ge 2000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2000</span></span></span></span>.</p>
+</div></div>
+<div class="box box-probe"><div class="box-title">Kompiliert und getestet (javac/java, JDK 21)</div><div class="box-body"><p>Ausgabe der Beispielaufrufe (identisch mit der Angabe):</p>
+<pre><code>3
+4
+0
+</code></pre>
+<p>Eigene Randfälle:</p>
+<pre><code>sumUp(4, 9, 320_300) = 80072   (für result in main; als short: 14536, siehe K2-2024c.5)
+sumUp(1, 0, 5)       = 5       (d = 1: Rest immer 0, jeder Schritt zählt)
+sumUp(3, 2, 3)       = 0       (ein Schritt, Rest 2)
+sumUp(10, 3, 30)     = 0       (Rest verdoppelt sich: 3, 6, 2, 4, 8, 6, …)
+</code></pre>
+<p>(<code>sumUp(1, 0, 5)</code> liegt außerhalb der Annahme <code>0 &lt; s</code>, zeigt aber, dass die Schleife auch dort sauber endet.)</p>
+</div></div>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p><code>while (s &lt; t)</code>: Rest <code>s % d</code>; bei 0 <code>s += 1</code> und Nullreste zählen, sonst <code>s += rest</code>; nach der Schleife den Zähler zurückgeben (Code oben).</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-def"><div class="box-title">while-Schleife</div><div class="box-body"><p><code>while (bedingung) { … }</code> prüft die Bedingung <strong>vor</strong> jedem Durchlauf und läuft, solange sie wahr ist. Geeignet, wenn die Anzahl der Durchläufe vorher unbekannt ist. Die Schleife muss die Bedingung irgendwann falsch machen (hier: <code>s</code> wächst immer).</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li><code>while (s &lt;= t)</code> – dann läuft die Schleife bei <code>s == t</code> noch einmal (Off-by-one; <code>sumUp(8, 8, 40)</code> liefert dann 5 statt 4, weil bei <code>s = 40</code> noch ein Nullrest gezählt wird).</li>
+<li>Bei Rest 0 gar nichts addieren → Endlosschleife.</li>
+<li>Die Summe statt der Anzahl Nullreste zurückgeben.</li>
+<li><code>rest</code> außerhalb der Schleife einmal berechnen und nie aktualisieren.</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-K2-2024c-2.html">K2-2024c.2</a> (addMark), <a href="beispiel-K2-2024c-5.html">K2-2024c.5</a> (main mit short-Überlauf), <a href="beispiel-K2-2024-1.html">K2-2024.1</a> (countDivisors).</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="ep1/K2-2024c.1" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><a class="pager prev" href="beispiel-K2-2024b-5.html"><span class="pager-dir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Vorheriges</span><span class="pager-title"><b>Bsp. K2-2024b.5</b> main – Deklarationen, short-Zuweisung und Testaufrufe (Test 2)</span></a><a class="pager next" href="beispiel-K2-2024c-2.html"><span class="pager-dir">Nächstes <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><span class="pager-title"><b>Bsp. K2-2024c.2</b> addMark – Teilstring an Position, Anfang oder Ende suchen</span></a></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-code-1">Code</a></li><li><a href="#loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</a></li><li><a href="#loesungsvors-trace-fuer-sumup-2-5-11-3">Trace für <code>sumUp(2, 5, 11)</code></a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">K2-Einstufungstest – Beispieltests</div><div class="minimap" data-minimap="ep1" data-kap="0" data-current="K2-2024c.1"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Einführung in die Programmierung 1" data-nr="K2-2024c.1">
+## Angabe
+
+*Einstufungstest K2, WS2024 (Beispieltest 3), Methode 1 von 4 – (5 Punkte)*
+
+**Einschränkungen**
+
+- Sie dürfen **keine** zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.
+- Die vorgegebenen Methodenköpfe dürfen **nicht** erweitert oder geändert werden.
+- Sie dürfen Strings **nicht** per Referenz vergleichen.
+- Sie dürfen **nicht** die Klassen `StringBuffer` bzw. `StringBuilder` verwenden.
+- Sie dürfen **keine** Lambdas, Streams oder Methodenreferenzen verwenden.
+- Sie dürfen **nur** folgende Methode(n) aus der Klasse `String` verwenden: `charAt`, `equals`, `length`, `substring`.
+- Sie dürfen **nur** folgende Methode(n) aus der Klasse `Character` verwenden: `isDigit`.
+- Aus der Klasse `Math` dürfen alle Methoden verwendet werden. Sonst darf **keine** weitere Klasse verwendet werden.
+
+**Aufgabenstellung**
+
+`int sumUp(int d, int s, int t)` erhöht `s`, bis `s` nicht mehr kleiner als `t` ist. Dazu wird wiederholt der Rest der Division `s/d` zu `s` addiert. Ist der Rest `0`, dann wird statt dessen `1` addiert. Gibt zurück, wie oft der Rest der Division `0` war.
+*Annahme(n):* `0 < d`, `0 < s < t`.
+
+| Aufruf | Ausgabe in main auf der Konsole |
+|---|---|
+| `sumUp(2, 5, 11)` | `3` |
+| `sumUp(8, 8, 40)` | `4` |
+| `sumUp(5, 1, 2000)` | `0` |
+
+*Bewertung:* korrekte Schleife(n) 1, korrekter Test 1, korrekte Berechnung und Rückgabe 3.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+Wie oft die Schleife läuft, steht nicht vorher fest – sie läuft, **solange** `s < t` gilt. Das ist der typische Fall für eine `while`-Schleife. In jedem Durchlauf berechnen wir `rest = s % d`; ist er 0, addieren wir 1 und zählen mit, sonst addieren wir den Rest. Die Schleife endet sicher, weil `s` in jedem Durchlauf um mindestens 1 wächst.
+:::
+
+### Code
+
+```java
+public static int sumUp(int d, int s, int t) {
+    int zeros = 0;
+    while (s < t) {
+        int rest = s % d;
+        if (rest == 0) {
+            s += 1;
+            zeros++;
+        } else {
+            s += rest;
+        }
+    }
+    return zeros;
+}
+```
+
+### Schritt für Schritt
+
+1. **Zähler** `zeros = 0` für die Nullreste.
+2. **Schleifenbedingung** `s < t` – „erhöhen, **bis** `s` nicht mehr kleiner als `t` ist“ heißt: weitermachen, solange `s < t`.
+3. **Rest berechnen** mit `s % d` (Annahme `d > 0`, also keine Division durch 0).
+4. **Fallunterscheidung:** Rest 0 → `s += 1` und `zeros++`; sonst `s += rest`. Der Parameter `s` darf verändert werden – er ist eine lokale Kopie, der Aufrufer merkt davon nichts.
+5. **Rückgabe** der Anzahl Nullreste.
+
+### Trace für `sumUp(2, 5, 11)`
+
+| `s` vorher | `s % 2` | Aktion | `s` nachher | `zeros` |
+|---|---|---|---|---|
+| 5 | 1 | $+1$ (Rest) | 6 | 0 |
+| 6 | 0 | $+1$, zählen | 7 | 1 |
+| 7 | 1 | $+1$ | 8 | 1 |
+| 8 | 0 | $+1$, zählen | 9 | 2 |
+| 9 | 1 | $+1$ | 10 | 2 |
+| 10 | 0 | $+1$, zählen | 11 | 3 |
+| 11 | – | `11 < 11` falsch → Ende | | |
+
+Rückgabe **3** ✓.
+
+**`sumUp(8, 8, 40)`:** $8 \to 9$ (Rest 0, zeros 1) $\to 10 \to 12 \to 16 \to 17$ (Rest 0, zeros 2) $\to 18 \to 20 \to 24 \to 25$ (zeros 3) $\to 26 \to 28 \to 32 \to 33$ (zeros 4) $\to 34 \to 36 \to 40$ → Ende, **4** ✓.
+
+:::hinweis Warum liefert sumUp(5, 1, 2000) genau 0?
+Addiert man zu $s$ seinen Rest $r = s \bmod d$, so gilt $s + r \equiv 2s \pmod d$. Der Rest verdoppelt sich also in jedem Schritt modulo 5: $1 \to 2 \to 4 \to 3 \to 1 \to \dots$ Da $2s \equiv 0 \pmod 5$ nur für $s \equiv 0$ gilt, wird der Rest **nie** 0, wenn er nicht schon 0 war. Bei Start $s = 1$ ist das Ergebnis daher 0 – die Schleife läuft trotzdem, bis $s \ge 2000$.
+:::
+
+:::probe Kompiliert und getestet (javac/java, JDK 21)
+Ausgabe der Beispielaufrufe (identisch mit der Angabe):
+
+```
+3
+4
+0
+```
+
+Eigene Randfälle:
+
+```
+sumUp(4, 9, 320_300) = 80072   (für result in main; als short: 14536, siehe K2-2024c.5)
+sumUp(1, 0, 5)       = 5       (d = 1: Rest immer 0, jeder Schritt zählt)
+sumUp(3, 2, 3)       = 0       (ein Schritt, Rest 2)
+sumUp(10, 3, 30)     = 0       (Rest verdoppelt sich: 3, 6, 2, 4, 8, 6, …)
+```
+
+(`sumUp(1, 0, 5)` liegt außerhalb der Annahme `0 < s`, zeigt aber, dass die Schleife auch dort sauber endet.)
+:::
+
+:::ergebnis
+`while (s < t)`: Rest `s % d`; bei 0 `s += 1` und Nullreste zählen, sonst `s += rest`; nach der Schleife den Zähler zurückgeben (Code oben).
+:::
+
+## Hilfreiches
+
+:::def while-Schleife
+`while (bedingung) { … }` prüft die Bedingung **vor** jedem Durchlauf und läuft, solange sie wahr ist. Geeignet, wenn die Anzahl der Durchläufe vorher unbekannt ist. Die Schleife muss die Bedingung irgendwann falsch machen (hier: `s` wächst immer).
+:::
+
+:::achtung Typische Fehler
+- `while (s <= t)` – dann läuft die Schleife bei `s == t` noch einmal (Off-by-one; `sumUp(8, 8, 40)` liefert dann 5 statt 4, weil bei `s = 40` noch ein Nullrest gezählt wird).
+- Bei Rest 0 gar nichts addieren → Endlosschleife.
+- Die Summe statt der Anzahl Nullreste zurückgeben.
+- `rest` außerhalb der Schleife einmal berechnen und nie aktualisieren.
+:::
+
+Verwandte Beispiele: [K2-2024c.2](beispiel-K2-2024c-2.html) (addMark), [K2-2024c.5](beispiel-K2-2024c-5.html) (main mit short-Überlauf), [K2-2024.1](beispiel-K2-2024-1.html) (countDivisors).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>

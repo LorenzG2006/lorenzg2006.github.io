@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP1 K2-2024c.4: printPattern – wanderndes ?-Muster mit x und y · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#b45309" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link active" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">EP1</a><span>›</span><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a><span>›</span><span>Bsp. K2-2024c.4</span></nav>
+<div class="printhead">Rechenweg · Einführung in die Programmierung 1 · K2-Einstufungstest – Beispieltests</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">EP1</span><span>Beispiel K2-2024c.4</span><span class="dot">·</span><span class="ex-topic">Konsolenausgabe (verschachtelte Schleifen, Bereiche einer Zeile)</span></div>
+<h1>printPattern – wanderndes ?-Muster mit x und y</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="beispiel-K2-2024c-3.html"  title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="beispiel-K2-2024c-5.html"  title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/EP1_Bsp_K2-2024c-4.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="ep1/K2-2024c.4" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">printPattern – wanderndes ?-Muster mit x und y</div><table>
+<tr><th>Kurs</th><td>Einführung in die Programmierung 1</td></tr><tr><th>Nummer</th><td>K2-2024c.4</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a></td></tr><tr><th>Thema</th><td>Konsolenausgabe (verschachtelte Schleifen, Bereiche einer Zeile)</td></tr>
+<tr><th>Navigation</th><td><a href="beispiel-K2-2024c-3.html">← K2-2024c.3</a> <a href="beispiel-K2-2024c-5.html">K2-2024c.5 →</a></td></tr>
+<tr><th>PDF</th><td><a href="pdf/EP1_Bsp_K2-2024c-4.pdf">EP1_Bsp_K2-2024c-4.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/ep1/k2-beispieltests.pdf#page=5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p><em>Einstufungstest K2, WS2024 (Beispieltest 3), Methode 4 von 4 – (6 Punkte)</em></p>
+<p><strong>Einschränkungen</strong></p>
+<ul>
+<li>Sie dürfen <strong>keine</strong> zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.</li>
+<li>Die vorgegebenen Methodenköpfe dürfen <strong>nicht</strong> erweitert oder geändert werden.</li>
+<li>Sie dürfen Strings <strong>nicht</strong> per Referenz vergleichen.</li>
+<li>Sie dürfen <strong>nicht</strong> die Klassen <code>StringBuffer</code> bzw. <code>StringBuilder</code> verwenden.</li>
+<li>Sie dürfen <strong>keine</strong> Lambdas, Streams oder Methodenreferenzen verwenden.</li>
+<li>Sie dürfen <strong>nur</strong> folgende Methode(n) aus der Klasse <code>String</code> verwenden: <code>charAt</code>, <code>equals</code>, <code>length</code>, <code>substring</code>.</li>
+<li>Sie dürfen <strong>nur</strong> folgende Methode(n) aus der Klasse <code>Character</code> verwenden: <code>isDigit</code>.</li>
+<li>Aus der Klasse <code>Math</code> dürfen alle Methoden verwendet werden. Sonst darf <strong>keine</strong> weitere Klasse verwendet werden.</li>
+</ul>
+<p><strong>Aufgabenstellung</strong></p>
+<p><code>void printPattern(int lineLength, int patternLength)</code> gibt auf der Konsole eine oder mehrere Zeilen der Länge <code>lineLength</code> aus. Jede Zeile enthält <code>patternLength</code> mal das Zeichen <code>&#39;?&#39;</code> direkt hintereinander. In der ersten Zeile stehen diese am Beginn der Zeile, in jeder weiteren Zeile wandern sie um jeweils <code>patternLength</code> viele Zeichen nach rechts. Die Zeilen werden rechts der <code>&#39;?&#39;</code> mit dem Buchstaben <code>&#39;y&#39;</code> aufgefüllt, und ab der zweiten Zeile links der <code>&#39;?&#39;</code> mit dem Buchstaben <code>&#39;x&#39;</code>.
+Es gibt genau so viele Zeilen, dass sich auch in der letzten Zeile noch alle <code>patternLength</code> viele Zeichen <code>&#39;?&#39;</code> ausgehen.
+<em>Annahme(n):</em> <code>0 &lt; patternLength &lt;= lineLength</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Aufruf</th>
+<th>Ausgabe in main auf der Konsole</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>printPattern(6, 2)</code></td>
+<td><code>??yyyy</code><br><code>xx??yy</code><br><code>xxxx??</code></td>
+</tr>
+<tr>
+<td><code>printPattern(7, 3)</code></td>
+<td><code>???yyyy</code><br><code>xxx???y</code></td>
+</tr>
+<tr>
+<td><code>printPattern(1, 1)</code></td>
+<td><code>?</code></td>
+</tr>
+<tr>
+<td><code>printPattern(8, 5)</code></td>
+<td><code>?????yyy</code></td>
+</tr>
+</tbody></table>
+<p><em>Bewertung:</em> korrekte Programmstruktur 1, korrekte Anzahl an Zeilen 1, Struktur der Zeilen korrekt 3, korrekte Entwicklung des Musters 1.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>Jede Zeile besteht aus drei Bereichen: <code>x</code> von Spalte <code>0</code> bis <code>start - 1</code>, <code>?</code> von <code>start</code> bis <code>start + patternLength - 1</code>, <code>y</code> bis zum Zeilenende. Dabei ist <code>start</code> die Startspalte der <code>?</code>, die in der ersten Zeile <code>0</code> ist und pro Zeile um <code>patternLength</code> wächst. Eine Zeile gibt es, solange die <code>?</code> noch ganz hineinpassen: <code>start + patternLength &lt;= lineLength</code>. Die äußere Schleife läuft über <code>start</code>, die innere über die Spalten <code>j</code>.</p>
+</div></div>
+<h3 id="loesungsvors-code-1">Code</h3>
+<pre><code class="language-java">public static void printPattern(int lineLength, int patternLength) {
+    for (int start = 0; start + patternLength &lt;= lineLength; start += patternLength) {
+        for (int j = 0; j &lt; lineLength; j++) {
+            if (j &lt; start) {
+                System.out.print(&#39;x&#39;);
+            } else if (j &lt; start + patternLength) {
+                System.out.print(&#39;?&#39;);
+            } else {
+                System.out.print(&#39;y&#39;);
+            }
+        }
+        System.out.println();
+    }
+}
+</code></pre>
+<h3 id="loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</h3>
+<ol>
+<li><strong>Äußere Schleife:</strong> <code>start = 0, patternLength, 2·patternLength, …</code>, solange <code>start + patternLength &lt;= lineLength</code>. Damit ist die Zeilenanzahl <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mtext>lineLength</mtext><mi mathvariant="normal">/</mi><mtext>patternLength</mtext><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor \text{lineLength} / \text{patternLength} \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord text"><span class="mord">lineLength</span></span><span class="mord">/</span><span class="mord text"><span class="mord">patternLength</span></span><span class="mclose">⌋</span></span></span></span> – wegen der Annahme mindestens 1.</li>
+<li><strong>Innere Schleife:</strong> genau <code>lineLength</code> Zeichen pro Zeile.</li>
+<li><strong>Bereichswahl</strong> per <code>if / else if / else</code>: links <code>x</code>, Mitte <code>?</code>, rechts <code>y</code>. In der ersten Zeile ist <code>start = 0</code>, die Bedingung <code>j &lt; 0</code> nie wahr – also kein <code>x</code>, wie verlangt.</li>
+<li><strong>Zeilenende</strong> mit <code>System.out.println()</code>.</li>
+</ol>
+<h3 id="loesungsvors-trace-fuer-printpattern-7-3-3">Trace für <code>printPattern(7, 3)</code></h3>
+<table>
+<thead>
+<tr>
+<th><code>start</code></th>
+<th><code>start + 3 &lt;= 7</code>?</th>
+<th>Spalten 0–6</th>
+<th>Zeile</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>ja</td>
+<td><code>?</code>(0–2), <code>y</code>(3–6)</td>
+<td><code>???yyyy</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>ja</td>
+<td><code>x</code>(0–2), <code>?</code>(3–5), <code>y</code>(6)</td>
+<td><code>xxx???y</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>nein (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>&gt;</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">9 &gt; 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>) → Ende</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Zwei Zeilen ✓. Bei <code>printPattern(6, 2)</code>: <code>start = 0, 2, 4</code> (bei <code>6</code> ist <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>&gt;</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">8 &gt; 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>) → drei Zeilen, die letzte <code>xxxx??</code> endet genau am Rand ✓.</p>
+<div class="box box-probe"><div class="box-title">Kompiliert und getestet (javac/java, JDK 21)</div><div class="box-body"><p>Ausgabe der Beispielaufrufe (identisch mit der Angabe):</p>
+<pre><code>??yyyy
+xx??yy
+xxxx??
+???yyyy
+xxx???y
+?
+?????yyy
+</code></pre>
+<p>Eigene Randfälle:</p>
+<pre><code>printPattern(3, 1):
+?yy
+x?y
+xx?
+printPattern(5, 5):
+?????
+</code></pre>
+</div></div>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>Äußere Schleife über die Startspalte <code>start = 0, p, 2p, …</code> solange <code>start + p &lt;= lineLength</code>; innere Schleife über alle Spalten mit <code>x</code> für <code>j &lt; start</code>, <code>?</code> für <code>j &lt; start + p</code>, sonst <code>y</code>; Zeile mit <code>println()</code> beenden (Code oben, <code>p = patternLength</code>).</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-methode"><div class="box-title">Muster ausgeben</div><div class="box-body"><p>Für jede Zeile überlegen: Welche <strong>Spaltenbereiche</strong> gibt es, und wie hängen ihre Grenzen von der Zeilennummer ab? Dann eine innere Schleife über alle Spalten mit einer <code>if</code>-Kette für die Bereiche. Das ist robuster als drei getrennte Schleifen mit berechneten Längen.</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li>Abbruchbedingung <code>start &lt; lineLength</code> – dann entsteht eine letzte Zeile mit abgeschnittenen <code>?</code> (z. B. <code>xxxxxx?</code> bei <code>(7, 3)</code>).</li>
+<li><code>start</code> um 1 statt um <code>patternLength</code> erhöhen.</li>
+<li><code>x</code> auch in der ersten Zeile oder <code>y</code> links der <code>?</code> ausgeben.</li>
+<li><code>System.out.print(&quot;x&quot;)</code> ist erlaubt, aber <code>&#39;x&#39; + &#39;?&#39;</code> in einem <code>print</code> ergibt eine Zahl.</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-K2-2024c-3.html">K2-2024c.3</a> (digitsToDistance), <a href="beispiel-K2-2024-4.html">K2-2024.4</a> (printPattern, Test 1), <a href="beispiel-K2-2024b-4.html">K2-2024b.4</a> (printBars).</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="ep1/K2-2024c.4" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><a class="pager prev" href="beispiel-K2-2024c-3.html"><span class="pager-dir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Vorheriges</span><span class="pager-title"><b>Bsp. K2-2024c.3</b> digitsToDistance – Ziffern durch Abstände ersetzen</span></a><a class="pager next" href="beispiel-K2-2024c-5.html"><span class="pager-dir">Nächstes <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><span class="pager-title"><b>Bsp. K2-2024c.5</b> main – short-Zuweisung mit Überlauf und Testaufrufe (Test 3)</span></a></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-code-1">Code</a></li><li><a href="#loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</a></li><li><a href="#loesungsvors-trace-fuer-printpattern-7-3-3">Trace für <code>printPattern(7, 3)</code></a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">K2-Einstufungstest – Beispieltests</div><div class="minimap" data-minimap="ep1" data-kap="0" data-current="K2-2024c.4"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Einführung in die Programmierung 1" data-nr="K2-2024c.4">
+## Angabe
+
+*Einstufungstest K2, WS2024 (Beispieltest 3), Methode 4 von 4 – (6 Punkte)*
+
+**Einschränkungen**
+
+- Sie dürfen **keine** zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.
+- Die vorgegebenen Methodenköpfe dürfen **nicht** erweitert oder geändert werden.
+- Sie dürfen Strings **nicht** per Referenz vergleichen.
+- Sie dürfen **nicht** die Klassen `StringBuffer` bzw. `StringBuilder` verwenden.
+- Sie dürfen **keine** Lambdas, Streams oder Methodenreferenzen verwenden.
+- Sie dürfen **nur** folgende Methode(n) aus der Klasse `String` verwenden: `charAt`, `equals`, `length`, `substring`.
+- Sie dürfen **nur** folgende Methode(n) aus der Klasse `Character` verwenden: `isDigit`.
+- Aus der Klasse `Math` dürfen alle Methoden verwendet werden. Sonst darf **keine** weitere Klasse verwendet werden.
+
+**Aufgabenstellung**
+
+`void printPattern(int lineLength, int patternLength)` gibt auf der Konsole eine oder mehrere Zeilen der Länge `lineLength` aus. Jede Zeile enthält `patternLength` mal das Zeichen `'?'` direkt hintereinander. In der ersten Zeile stehen diese am Beginn der Zeile, in jeder weiteren Zeile wandern sie um jeweils `patternLength` viele Zeichen nach rechts. Die Zeilen werden rechts der `'?'` mit dem Buchstaben `'y'` aufgefüllt, und ab der zweiten Zeile links der `'?'` mit dem Buchstaben `'x'`.
+Es gibt genau so viele Zeilen, dass sich auch in der letzten Zeile noch alle `patternLength` viele Zeichen `'?'` ausgehen.
+*Annahme(n):* `0 < patternLength <= lineLength`.
+
+| Aufruf | Ausgabe in main auf der Konsole |
+|---|---|
+| `printPattern(6, 2)` | `??yyyy`<br>`xx??yy`<br>`xxxx??` |
+| `printPattern(7, 3)` | `???yyyy`<br>`xxx???y` |
+| `printPattern(1, 1)` | `?` |
+| `printPattern(8, 5)` | `?????yyy` |
+
+*Bewertung:* korrekte Programmstruktur 1, korrekte Anzahl an Zeilen 1, Struktur der Zeilen korrekt 3, korrekte Entwicklung des Musters 1.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+Jede Zeile besteht aus drei Bereichen: `x` von Spalte `0` bis `start - 1`, `?` von `start` bis `start + patternLength - 1`, `y` bis zum Zeilenende. Dabei ist `start` die Startspalte der `?`, die in der ersten Zeile `0` ist und pro Zeile um `patternLength` wächst. Eine Zeile gibt es, solange die `?` noch ganz hineinpassen: `start + patternLength <= lineLength`. Die äußere Schleife läuft über `start`, die innere über die Spalten `j`.
+:::
+
+### Code
+
+```java
+public static void printPattern(int lineLength, int patternLength) {
+    for (int start = 0; start + patternLength <= lineLength; start += patternLength) {
+        for (int j = 0; j < lineLength; j++) {
+            if (j < start) {
+                System.out.print('x');
+            } else if (j < start + patternLength) {
+                System.out.print('?');
+            } else {
+                System.out.print('y');
+            }
+        }
+        System.out.println();
+    }
+}
+```
+
+### Schritt für Schritt
+
+1. **Äußere Schleife:** `start = 0, patternLength, 2·patternLength, …`, solange `start + patternLength <= lineLength`. Damit ist die Zeilenanzahl $\lfloor \text{lineLength} / \text{patternLength} \rfloor$ – wegen der Annahme mindestens 1.
+2. **Innere Schleife:** genau `lineLength` Zeichen pro Zeile.
+3. **Bereichswahl** per `if / else if / else`: links `x`, Mitte `?`, rechts `y`. In der ersten Zeile ist `start = 0`, die Bedingung `j < 0` nie wahr – also kein `x`, wie verlangt.
+4. **Zeilenende** mit `System.out.println()`.
+
+### Trace für `printPattern(7, 3)`
+
+| `start` | `start + 3 <= 7`? | Spalten 0–6 | Zeile |
+|---|---|---|---|
+| 0 | ja | `?`(0–2), `y`(3–6) | `???yyyy` |
+| 3 | ja | `x`(0–2), `?`(3–5), `y`(6) | `xxx???y` |
+| 6 | nein ($9 > 7$) → Ende | | |
+
+Zwei Zeilen ✓. Bei `printPattern(6, 2)`: `start = 0, 2, 4` (bei `6` ist $8 > 6$) → drei Zeilen, die letzte `xxxx??` endet genau am Rand ✓.
+
+:::probe Kompiliert und getestet (javac/java, JDK 21)
+Ausgabe der Beispielaufrufe (identisch mit der Angabe):
+
+```
+??yyyy
+xx??yy
+xxxx??
+???yyyy
+xxx???y
+?
+?????yyy
+```
+
+Eigene Randfälle:
+
+```
+printPattern(3, 1):
+?yy
+x?y
+xx?
+printPattern(5, 5):
+?????
+```
+:::
+
+:::ergebnis
+Äußere Schleife über die Startspalte `start = 0, p, 2p, …` solange `start + p <= lineLength`; innere Schleife über alle Spalten mit `x` für `j < start`, `?` für `j < start + p`, sonst `y`; Zeile mit `println()` beenden (Code oben, `p = patternLength`).
+:::
+
+## Hilfreiches
+
+:::methode Muster ausgeben
+Für jede Zeile überlegen: Welche **Spaltenbereiche** gibt es, und wie hängen ihre Grenzen von der Zeilennummer ab? Dann eine innere Schleife über alle Spalten mit einer `if`-Kette für die Bereiche. Das ist robuster als drei getrennte Schleifen mit berechneten Längen.
+:::
+
+:::achtung Typische Fehler
+- Abbruchbedingung `start < lineLength` – dann entsteht eine letzte Zeile mit abgeschnittenen `?` (z. B. `xxxxxx?` bei `(7, 3)`).
+- `start` um 1 statt um `patternLength` erhöhen.
+- `x` auch in der ersten Zeile oder `y` links der `?` ausgeben.
+- `System.out.print("x")` ist erlaubt, aber `'x' + '?'` in einem `print` ergibt eine Zahl.
+:::
+
+Verwandte Beispiele: [K2-2024c.3](beispiel-K2-2024c-3.html) (digitsToDistance), [K2-2024.4](beispiel-K2-2024-4.html) (printPattern, Test 1), [K2-2024b.4](beispiel-K2-2024b-4.html) (printBars).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>

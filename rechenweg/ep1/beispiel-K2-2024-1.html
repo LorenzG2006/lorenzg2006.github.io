@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP1 K2-2024.1: countDivisors – durch 4, aber nicht durch 6 teilbar · Rechenweg</title>
+<script>try{var d=document.documentElement,t=localStorage.getItem('rw-theme'),y=localStorage.getItem('rw-style'),q=/[?&]style=([a-z]+)/.exec(location.search);if(q)y=q[1]==='modern'?null:q[1];if(t)d.dataset.theme=t;if(y)d.dataset.style=y;if(localStorage.getItem('rw-hide')==='1')d.classList.add('hide-solutions')}catch(e){}</script>
+<link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/style.css">
+</head><body class="page-ex" style="--accent:#b45309" data-up="../" data-lang="de">
+<a class="skip" href="#main">Skip</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 23 L13 17 L17 20 L24 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="9" r="2.4" fill="#fff"/></svg><span class="brand-text"><b>Rechenweg</b><small>WS 2026/27</small></span></a>
+<nav class="topnav"><a class="topnav-link" href="../adm/index.html" style="--c:#4f46e5">ADM</a><a class="topnav-link" href="../analysis/index.html" style="--c:#0d9488">Analysis</a><a class="topnav-link" href="../gds/index.html" style="--c:#c2410c">GDS</a><a class="topnav-link active" href="../ep1/index.html" style="--c:#b45309">EP1</a><a class="topnav-link" href="../ori/index.html" style="--c:#475569">ORI</a><a class="topnav-link" href="../karten.html">Karteikarten</a><a class="topnav-link" href="../pruefung.html">Prüfung</a><a class="topnav-link" href="../termine.html">Termine</a></nav>
+<button class="searchbtn" type="button" data-open-search aria-label="Beispiel suchen …"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Beispiel suchen …</span><kbd>/</kbd></button>
+<div class="menuwrap"><button class="iconbtn" type="button" data-menu="style" aria-label="Darstellung" title="Darstellung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></button>
+<div class="menu" id="menu-style" hidden><div class="menu-title">Darstellung</div>
+<button type="button" data-set-style="modern"><b>Modern</b><small>klar, ruhig</small></button>
+<button type="button" data-set-style="lexikon"><b>Lexikon</b><small>Serifen, Steckbrief, wie ein Nachschlagewerk</small></button>
+<button type="button" data-set-style="tafel"><b>Tafel</b><small>Kreide auf Grün – zum Präsentieren</small></button>
+<div class="menu-sep"></div><button type="button" data-theme-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Hell/Dunkel</button></div></div>
+
+</div></header>
+<main id="main"><div class="wrap ex-wrap">
+<div class="ex-main">
+<nav class="crumbs"><a href="../index.html">Start</a><span>›</span><a href="index.html">EP1</a><span>›</span><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a><span>›</span><span>Bsp. K2-2024.1</span></nav>
+<div class="printhead">Rechenweg · Einführung in die Programmierung 1 · K2-Einstufungstest – Beispieltests</div>
+<div class="exam-banner" hidden></div>
+<header class="ex-head">
+<div class="ex-kicker"><span class="course-badge">EP1</span><span>Beispiel K2-2024.1</span><span class="dot">·</span><span class="ex-topic">Schleifen und Teilbarkeit (for, Modulo, Zähler)</span></div>
+<h1>countDivisors – durch 4, aber nicht durch 6 teilbar</h1>
+<div class="ex-actions">
+<a class="btn icon-only" href="#" aria-disabled="true" title="Vorheriges (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+<a class="btn icon-only" href="beispiel-K2-2024-2.html"  title="Nächstes (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="btn" href="pdf/EP1_Bsp_K2-2024-1.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> PDF</a>
+<button class="btn" type="button" data-toggle-hide title="L"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span class="lbl-hide">Lösung verbergen</span><span class="lbl-show">Lösung zeigen</span></button>
+<button class="btn" type="button" data-step-mode title="S"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Schritt für Schritt</button>
+<button class="btn" type="button" data-ai><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg> An KI übergeben</button>
+<button class="btn done-btn" type="button" data-done="ep1/K2-2024.1" title="V"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> <span class="lbl-undone">Verstanden</span><span class="lbl-done">Verstanden ✓</span></button>
+</div>
+</header>
+
+<aside class="infobox"><div class="infobox-title">countDivisors – durch 4, aber nicht durch 6 teilbar</div><table>
+<tr><th>Kurs</th><td>Einführung in die Programmierung 1</td></tr><tr><th>Nummer</th><td>K2-2024.1</td></tr>
+<tr><th>Kapitel</th><td><a href="index.html#kap-1">K2-Einstufungstest – Beispieltests</a></td></tr><tr><th>Thema</th><td>Schleifen und Teilbarkeit (for, Modulo, Zähler)</td></tr>
+<tr><th>Navigation</th><td> <a href="beispiel-K2-2024-2.html">K2-2024.2 →</a></td></tr>
+<tr><th>PDF</th><td><a href="pdf/EP1_Bsp_K2-2024-1.pdf">EP1_Bsp_K2-2024-1.pdf</a></td></tr></table></aside>
+<article class="ex-article"><section class="angabe" id="angabe"><div class="sec-label">Angabe<a class="orig" href="../material/ep1/k2-beispieltests.pdf#page=1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg> Originalseite</a></div><p><em>Einstufungstest K2, WS2024 (Beispieltest 1), Methode 1 von 4 – (5 Punkte)</em></p>
+<p><strong>Einschränkungen</strong></p>
+<ul>
+<li>Sie dürfen <strong>keine</strong> zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.</li>
+<li>Die vorgegebenen Methodenköpfe dürfen <strong>nicht</strong> erweitert oder geändert werden.</li>
+<li>Sie dürfen Strings <strong>nicht</strong> per Referenz vergleichen.</li>
+<li>Sie dürfen <strong>nicht</strong> die Klassen <code>StringBuffer</code> bzw. <code>StringBuilder</code> verwenden.</li>
+<li>Sie dürfen <strong>keine</strong> Lambdas, Streams oder Methodenreferenzen verwenden.</li>
+<li>Sie dürfen <strong>nur</strong> folgende Methode(n) aus der Klasse <code>String</code> verwenden: <code>charAt</code>, <code>equals</code>, <code>length</code>, <code>substring</code>.</li>
+<li>Aus der Klasse <code>Math</code> dürfen alle Methoden verwendet werden. Sonst darf <strong>keine</strong> weitere Klasse verwendet werden.</li>
+</ul>
+<p><strong>Aufgabenstellung</strong></p>
+<p><code>int countDivisors(int x, int y)</code> liefert die Anzahl der Zahlen im Intervall <code>[x,y]</code> zurück, die durch 4 teilbar sind, aber <em>nicht</em> durch 6.
+<em>Annahme(n):</em> <code>x &gt; 0</code>, <code>y &gt; 0</code>, <code>x &lt;= y</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Aufruf</th>
+<th>Ausgabe in main auf der Konsole</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>countDivisors(1, 28)</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>countDivisors(101, 2001)</code></td>
+<td><code>317</code></td>
+</tr>
+<tr>
+<td><code>countDivisors(8, 8)</code></td>
+<td><code>1</code></td>
+</tr>
+</tbody></table>
+<p><em>Bewertung:</em> korrekte Schleife 2, korrekte Berechnung 2, korrekte Rückgabe 1.</p>
+</section><section class="solution" id="loesung"><h2 class="sec-h">Lösung</h2><div class="solution-cover"><p>Lösung verborgen – erst selbst probieren!</p><button class="btn primary" type="button" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> Lösung anzeigen</button></div><div class="solution-body"><div class="box box-idee"><div class="box-title">Überblick</div><div class="box-body"><p>Wir gehen mit einer <code>for</code>-Schleife <strong>jede</strong> ganze Zahl <code>i</code> von <code>x</code> bis einschließlich <code>y</code> durch und prüfen mit dem Rest-Operator <code>%</code>, ob sie durch 4 teilbar ist (<code>i % 4 == 0</code>) und <strong>nicht</strong> durch 6 (<code>i % 6 != 0</code>). Trifft beides zu, erhöhen wir einen Zähler. Am Ende geben wir den Zähler zurück. Die Methode gibt selbst nichts aus – die Ausgabe passiert in <code>main</code>.</p>
+</div></div>
+<h3 id="loesungsvors-code-1">Code</h3>
+<pre><code class="language-java">public static int countDivisors(int x, int y) {
+    int count = 0;
+    for (int i = x; i &lt;= y; i++) {
+        if (i % 4 == 0 &amp;&amp; i % 6 != 0) {
+            count++;
+        }
+    }
+    return count;
+}
+</code></pre>
+<h3 id="loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</h3>
+<ol>
+<li><strong>Zähler anlegen:</strong> <code>int count = 0;</code> – vor der Schleife, sonst würde er bei jedem Durchlauf neu auf 0 gesetzt.</li>
+<li><strong>Schleife über das geschlossene Intervall:</strong> Start bei <code>i = x</code>, Bedingung <code>i &lt;= y</code> (nicht <code>&lt;</code>!), denn auch <code>y</code> selbst gehört zu <code>[x,y]</code>.</li>
+<li><strong>Teilbarkeit:</strong> <code>a % b</code> ist der Rest der Ganzzahldivision. <code>a</code> ist genau dann durch <code>b</code> teilbar, wenn der Rest 0 ist. Beide Bedingungen werden mit <code>&amp;&amp;</code> verknüpft.</li>
+<li><strong>Rückgabe:</strong> <code>return count;</code> <strong>nach</strong> der Schleife.</li>
+</ol>
+<h3 id="loesungsvors-trace-fuer-countdivisors-1-28-3">Trace für <code>countDivisors(1, 28)</code></h3>
+<p>Nur die durch 4 teilbaren Zahlen sind interessant (bei allen anderen ist die Bedingung schon im ersten Teil falsch):</p>
+<table>
+<thead>
+<tr>
+<th><code>i</code></th>
+<th><code>i % 4</code></th>
+<th><code>i % 6</code></th>
+<th>zählt?</th>
+<th><code>count</code> danach</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>ja</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td>2</td>
+<td>ja</td>
+<td>2</td>
+</tr>
+<tr>
+<td>12</td>
+<td>0</td>
+<td>0</td>
+<td>nein (durch 6 teilbar)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0</td>
+<td>4</td>
+<td>ja</td>
+<td>3</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0</td>
+<td>2</td>
+<td>ja</td>
+<td>4</td>
+</tr>
+<tr>
+<td>24</td>
+<td>0</td>
+<td>0</td>
+<td>nein</td>
+<td>4</td>
+</tr>
+<tr>
+<td>28</td>
+<td>0</td>
+<td>4</td>
+<td>ja</td>
+<td>5</td>
+</tr>
+</tbody></table>
+<p>Rückgabe <strong>5</strong> ✓. Für <code>countDivisors(8, 8)</code> läuft die Schleife genau einmal mit <code>i = 8</code>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">8 \bmod 4 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mn>6</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">8 \bmod 6 = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> → Rückgabe <strong>1</strong> ✓.</p>
+<div class="box box-hinweis"><div class="box-title">Mathematische Kontrolle</div><div class="box-body"><p>Durch 4 und 6 zugleich teilbar heißt durch <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">kgV</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>4</mn><mo separator="true">,</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">\kgV(4, 6) = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm" style="margin-right:0.01389em;">kgV</span></span><span class="mopen">(</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span> teilbar. Im Intervall <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>101</mn><mo separator="true">,</mo><mn>2001</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[101, 2001]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">101</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2001</span><span class="mclose">]</span></span></span></span> gibt es <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mn>2001</mn><mi mathvariant="normal">/</mi><mn>4</mn><mo stretchy="false">⌋</mo><mo>−</mo><mo stretchy="false">⌊</mo><mn>100</mn><mi mathvariant="normal">/</mi><mn>4</mn><mo stretchy="false">⌋</mo><mo>=</mo><mn>500</mn><mo>−</mo><mn>25</mn><mo>=</mo><mn>475</mn></mrow><annotation encoding="application/x-tex">\lfloor 2001/4 \rfloor - \lfloor 100/4 \rfloor = 500 - 25 = 475</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">2001/4</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">100/4</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">500</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">475</span></span></span></span> Vielfache von 4 und <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mn>2001</mn><mi mathvariant="normal">/</mi><mn>12</mn><mo stretchy="false">⌋</mo><mo>−</mo><mo stretchy="false">⌊</mo><mn>100</mn><mi mathvariant="normal">/</mi><mn>12</mn><mo stretchy="false">⌋</mo><mo>=</mo><mn>166</mn><mo>−</mo><mn>8</mn><mo>=</mo><mn>158</mn></mrow><annotation encoding="application/x-tex">\lfloor 2001/12 \rfloor - \lfloor 100/12 \rfloor = 166 - 8 = 158</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">2001/12</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">100/12</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">166</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">158</span></span></span></span> Vielfache von 12, also <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>475</mn><mo>−</mo><mn>158</mn><mo>=</mo><mn>317</mn></mrow><annotation encoding="application/x-tex">475 - 158 = 317</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">475</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">158</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">317</span></span></span></span> ✓. Die Schleife braucht diese Formel nicht – sie ist nur eine unabhängige Probe.</p>
+</div></div>
+<div class="box box-probe"><div class="box-title">Kompiliert und getestet (javac/java, JDK 21)</div><div class="box-body"><p>Ausgabe der Beispielaufrufe aus <code>main</code> (identisch mit der Angabe):</p>
+<pre><code>5
+317
+1
+</code></pre>
+<p>Eigene Randfälle:</p>
+<pre><code>countDivisors(299, 305) = 1     (result in main: 300 durch 12 teilbar, nur 304 zählt)
+countDivisors(12, 12)   = 0     (12 ist durch 6 teilbar)
+countDivisors(1, 3)     = 0     (kein Vielfaches von 4)
+countDivisors(1, 24)    = 4     (4, 8, 16, 20)
+</code></pre>
+</div></div>
+<div class="box box-ergebnis"><div class="box-title">Ergebnis</div><div class="box-body"><p>Eine <code>for</code>-Schleife von <code>x</code> bis <strong>einschließlich</strong> <code>y</code>, Bedingung <code>i % 4 == 0 &amp;&amp; i % 6 != 0</code>, Zähler erhöhen, nach der Schleife <code>return count;</code> (Code oben).</p>
+</div></div>
+</div><div class="stepbar" hidden><button class="btn primary" type="button" data-step-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4"/></svg> Nächster Schritt <kbd>S</kbd></button><button class="btn" type="button" data-step-all>Alles zeigen</button><span class="stepcount"></span></div></section><section class="extra" id="hilfreiches"><h2 class="sec-h">Hilfreiches</h2><div class="box box-def"><div class="box-title">Modulo-Operator</div><div class="box-body"><p><code>a % b</code> liefert den Rest der Ganzzahldivision <code>a / b</code> (für positive Zahlen zwischen <code>0</code> und <code>b - 1</code>). „<code>a</code> durch <code>b</code> teilbar“ ⇔ <code>a % b == 0</code>.</p>
+</div></div>
+<div class="box box-achtung"><div class="box-title">Typische Fehler</div><div class="box-body"><ul>
+<li><code>i &lt; y</code> statt <code>i &lt;= y</code> – dann fehlt <code>y</code> (Off-by-one; <code>countDivisors(8, 8)</code> liefert dann 0).</li>
+<li><code>i % 6 == 0</code> statt <code>!= 0</code> (Logik umgedreht) oder <code>||</code> statt <code>&amp;&amp;</code>.</li>
+<li><code>return</code> <strong>in</strong> der Schleife – die Methode bricht nach dem ersten Treffer ab.</li>
+<li><code>System.out.println</code> in der Methode statt <code>return</code> – laut Angabe darf nur <code>printPattern</code> ausgeben.</li>
+<li>Fehlende Klammer oder fehlendes <code>return</code> → Compilerfehler → <strong>0 Punkte</strong> für den ganzen Test. Vor der Abgabe immer kompilieren.</li>
+</ul>
+</div></div>
+<p>Verwandte Beispiele: <a href="beispiel-K2-2024-2.html">K2-2024.2</a> (findDoubles), <a href="beispiel-K2-2024-5.html">K2-2024.5</a> (main), <a href="beispiel-K2-2024b-1.html">K2-2024b.1</a> (getIntegerRoot).</p>
+</section></article>
+<section class="notes"><label class="rail-title" for="note">Meine Notizen</label><textarea id="note" data-note="ep1/K2-2024.1" placeholder="Eigene Notizen zu diesem Beispiel (bleiben in diesem Browser) …"></textarea></section>
+<nav class="pagers"><span class="pager prev disabled"></span><a class="pager next" href="beispiel-K2-2024-2.html"><span class="pager-dir">Nächstes <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><span class="pager-title"><b>Bsp. K2-2024.2</b> findDoubles – doppelte 'a' in einem String zählen</span></a></nav>
+</div>
+<aside class="ex-rail"><nav class="toc"><div class="rail-title">Auf dieser Seite</div><ol><li><a href="#angabe">Angabe</a></li><li><a href="#loesung">Lösung</a><ol><li><a href="#loesungsvors-code-1">Code</a></li><li><a href="#loesungsvors-schritt-fuer-schritt-2">Schritt für Schritt</a></li><li><a href="#loesungsvors-trace-fuer-countdivisors-1-28-3">Trace für <code>countDivisors(1, 28)</code></a></li></ol></li><li><a href="#hilfreiches">Hilfreiches</a></li></ol></nav><div class="rail-box"><div class="rail-title">K2-Einstufungstest – Beispieltests</div><div class="minimap" data-minimap="ep1" data-kap="0" data-current="K2-2024.1"></div></div></aside>
+</div>
+<script type="text/plain" id="rw-src" data-kurs="Einführung in die Programmierung 1" data-nr="K2-2024.1">
+## Angabe
+
+*Einstufungstest K2, WS2024 (Beispieltest 1), Methode 1 von 4 – (5 Punkte)*
+
+**Einschränkungen**
+
+- Sie dürfen **keine** zusätzlichen eigenen Hilfsmethoden oder Klassenvariablen verwenden.
+- Die vorgegebenen Methodenköpfe dürfen **nicht** erweitert oder geändert werden.
+- Sie dürfen Strings **nicht** per Referenz vergleichen.
+- Sie dürfen **nicht** die Klassen `StringBuffer` bzw. `StringBuilder` verwenden.
+- Sie dürfen **keine** Lambdas, Streams oder Methodenreferenzen verwenden.
+- Sie dürfen **nur** folgende Methode(n) aus der Klasse `String` verwenden: `charAt`, `equals`, `length`, `substring`.
+- Aus der Klasse `Math` dürfen alle Methoden verwendet werden. Sonst darf **keine** weitere Klasse verwendet werden.
+
+**Aufgabenstellung**
+
+`int countDivisors(int x, int y)` liefert die Anzahl der Zahlen im Intervall `[x,y]` zurück, die durch 4 teilbar sind, aber *nicht* durch 6.
+*Annahme(n):* `x > 0`, `y > 0`, `x <= y`.
+
+| Aufruf | Ausgabe in main auf der Konsole |
+|---|---|
+| `countDivisors(1, 28)` | `5` |
+| `countDivisors(101, 2001)` | `317` |
+| `countDivisors(8, 8)` | `1` |
+
+*Bewertung:* korrekte Schleife 2, korrekte Berechnung 2, korrekte Rückgabe 1.
+
+## Lösungsvorschlag
+
+:::idee Überblick
+Wir gehen mit einer `for`-Schleife **jede** ganze Zahl `i` von `x` bis einschließlich `y` durch und prüfen mit dem Rest-Operator `%`, ob sie durch 4 teilbar ist (`i % 4 == 0`) und **nicht** durch 6 (`i % 6 != 0`). Trifft beides zu, erhöhen wir einen Zähler. Am Ende geben wir den Zähler zurück. Die Methode gibt selbst nichts aus – die Ausgabe passiert in `main`.
+:::
+
+### Code
+
+```java
+public static int countDivisors(int x, int y) {
+    int count = 0;
+    for (int i = x; i <= y; i++) {
+        if (i % 4 == 0 && i % 6 != 0) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+### Schritt für Schritt
+
+1. **Zähler anlegen:** `int count = 0;` – vor der Schleife, sonst würde er bei jedem Durchlauf neu auf 0 gesetzt.
+2. **Schleife über das geschlossene Intervall:** Start bei `i = x`, Bedingung `i <= y` (nicht `<`!), denn auch `y` selbst gehört zu `[x,y]`.
+3. **Teilbarkeit:** `a % b` ist der Rest der Ganzzahldivision. `a` ist genau dann durch `b` teilbar, wenn der Rest 0 ist. Beide Bedingungen werden mit `&&` verknüpft.
+4. **Rückgabe:** `return count;` **nach** der Schleife.
+
+### Trace für `countDivisors(1, 28)`
+
+Nur die durch 4 teilbaren Zahlen sind interessant (bei allen anderen ist die Bedingung schon im ersten Teil falsch):
+
+| `i` | `i % 4` | `i % 6` | zählt? | `count` danach |
+|---|---|---|---|---|
+| 4 | 0 | 4 | ja | 1 |
+| 8 | 0 | 2 | ja | 2 |
+| 12 | 0 | 0 | nein (durch 6 teilbar) | 2 |
+| 16 | 0 | 4 | ja | 3 |
+| 20 | 0 | 2 | ja | 4 |
+| 24 | 0 | 0 | nein | 4 |
+| 28 | 0 | 4 | ja | 5 |
+
+Rückgabe **5** ✓. Für `countDivisors(8, 8)` läuft die Schleife genau einmal mit `i = 8`: $8 \bmod 4 = 0$, $8 \bmod 6 = 2$ → Rückgabe **1** ✓.
+
+:::hinweis Mathematische Kontrolle
+Durch 4 und 6 zugleich teilbar heißt durch $\kgV(4, 6) = 12$ teilbar. Im Intervall $[101, 2001]$ gibt es $\lfloor 2001/4 \rfloor - \lfloor 100/4 \rfloor = 500 - 25 = 475$ Vielfache von 4 und $\lfloor 2001/12 \rfloor - \lfloor 100/12 \rfloor = 166 - 8 = 158$ Vielfache von 12, also $475 - 158 = 317$ ✓. Die Schleife braucht diese Formel nicht – sie ist nur eine unabhängige Probe.
+:::
+
+:::probe Kompiliert und getestet (javac/java, JDK 21)
+Ausgabe der Beispielaufrufe aus `main` (identisch mit der Angabe):
+
+```
+5
+317
+1
+```
+
+Eigene Randfälle:
+
+```
+countDivisors(299, 305) = 1     (result in main: 300 durch 12 teilbar, nur 304 zählt)
+countDivisors(12, 12)   = 0     (12 ist durch 6 teilbar)
+countDivisors(1, 3)     = 0     (kein Vielfaches von 4)
+countDivisors(1, 24)    = 4     (4, 8, 16, 20)
+```
+:::
+
+:::ergebnis
+Eine `for`-Schleife von `x` bis **einschließlich** `y`, Bedingung `i % 4 == 0 && i % 6 != 0`, Zähler erhöhen, nach der Schleife `return count;` (Code oben).
+:::
+
+## Hilfreiches
+
+:::def Modulo-Operator
+`a % b` liefert den Rest der Ganzzahldivision `a / b` (für positive Zahlen zwischen `0` und `b - 1`). „`a` durch `b` teilbar“ ⇔ `a % b == 0`.
+:::
+
+:::achtung Typische Fehler
+- `i < y` statt `i <= y` – dann fehlt `y` (Off-by-one; `countDivisors(8, 8)` liefert dann 0).
+- `i % 6 == 0` statt `!= 0` (Logik umgedreht) oder `||` statt `&&`.
+- `return` **in** der Schleife – die Methode bricht nach dem ersten Treffer ab.
+- `System.out.println` in der Methode statt `return` – laut Angabe darf nur `printPattern` ausgeben.
+- Fehlende Klammer oder fehlendes `return` → Compilerfehler → **0 Punkte** für den ganzen Test. Vor der Abgabe immer kompilieren.
+:::
+
+Verwandte Beispiele: [K2-2024.2](beispiel-K2-2024-2.html) (findDoubles), [K2-2024.5](beispiel-K2-2024-5.html) (main), [K2-2024b.1](beispiel-K2-2024b-1.html) (getIntegerRoot).
+</script></main>
+<footer class="sitefoot"><div class="sitefoot-inner"><span><b>Rechenweg</b> – selbst gerechnete Lösungsvorschläge zu den Übungsaufgaben WS 2026/27. Ohne Gewähr.</span><span class="keys"><kbd>/</kbd> Suche · <kbd>←</kbd><kbd>→</kbd> blättern · <kbd>L</kbd> Lösung · <kbd>S</kbd> Schritt · <kbd>V</kbd> verstanden</span></div></footer>
+<div class="search" id="search" hidden><div class="search-backdrop" data-close-search></div>
+<div class="search-panel" role="dialog"><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="search-input" type="search" placeholder="Nummer („171“, „ana 63“) oder Stichwort („Dijkstra“, „Induktion“) …" autocomplete="off"><kbd data-close-search>Esc</kbd></div>
+<ol class="search-results" id="search-results"></ol><div class="search-hint">↑ ↓ auswählen · Enter öffnen · Esc schließen</div></div></div>
+<script src="../assets/index.js"></script><script src="../assets/app.js"></script>
+</body></html>
